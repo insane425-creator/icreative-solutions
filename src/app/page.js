@@ -3,9 +3,9 @@ import NavigationBar from '../components/NavigationBar';
 import Hero from '../components/Hero';
 import Features from '../components/Features';
 import Products from '../components/Products';
-import About from '../components/About';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
+import Pricing from '../components/Pricing';
 
 export default function HomePage() {
   return (
@@ -14,7 +14,7 @@ export default function HomePage() {
       <Hero />
       <Features />
       <Products />
-      <About />
+      <Pricing />
       <Contact />
       <Footer />
     </div>

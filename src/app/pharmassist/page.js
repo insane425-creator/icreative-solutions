@@ -5,6 +5,7 @@ import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { motion } from 'framer-motion';
 import NavigationBar from '../../components/NavigationBar';
 import Footer from '../../components/Footer';
+import { Eye } from 'lucide-react';
 
 // Import PharmAssist-specific components
 import PharmHero from '../../components/pharmassist/PharmHero';
@@ -90,54 +91,41 @@ function SceneLoader() {
   );
 }
 
-// Enhanced Experience Mode Toggle with better styling
-function ExperienceToggle({ isClassic, onToggle }) {
+// Simple embedded 3D toggle component
+function Embedded3DToggle({ onToggle }) {
   return (
-    <motion.div 
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="fixed bottom-5 right-2 z-50"
-    >
-      <div className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-md rounded-2xl p-4 shadow-2xl border border-white/50 dark:border-gray-700/50">
-        <div className="flex items-center space-x-4">
-          <span className={`text-sm font-semibold transition-all duration-300 ${
-            isClassic ? 'text-cyan-600 scale-105' : 'text-gray-500'
-          }`}>
-            Classic
-          </span>
-          
+    <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 border-b border-gray-200 dark:border-gray-600">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-3">
+            <Eye className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+            <div>
+              <h3 className="text-sm font-semibold text-gray-900 dark:text-white">
+                Try our 3D Interactive Tour
+              </h3>
+              <p className="text-xs text-gray-600 dark:text-gray-300">
+                Experience the software in an immersive walkthrough
+              </p>
+            </div>
+          </div>
           <button
-            onClick={onToggle}
-            className={`relative inline-flex h-7 w-14 items-center rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 ${
-              isClassic 
-                ? 'bg-gray-300 hover:bg-gray-400' 
-                : 'bg-gradient-to-r from-cyan-500 to-sky-600 hover:from-cyan-600 hover:to-sky-700 shadow-lg'
-            }`}
+            onClick={() => onToggle(false)}
+            className="bg-gradient-to-r from-orange-500 to-red-500 dark:from-orange-400 dark:to-red-400 text-white px-4 py-2 rounded-lg text-sm font-medium hover:from-orange-600 hover:to-red-600 dark:hover:from-orange-500 dark:hover:to-red-500 transition-all duration-300 shadow-md hover:shadow-lg"
           >
-            <span
-              className={`inline-block h-5 w-5 transform rounded-full bg-white transition-all duration-300 shadow-md ${
-                isClassic ? 'translate-x-1' : 'translate-x-8'
-              }`}
-            />
+            Launch 3D Tour
           </button>
-          
-          <span className={`text-sm font-semibold transition-all duration-300 ${
-            !isClassic ? 'text-cyan-600 scale-105' : 'text-gray-500'
-          }`}>
-            3D View
-          </span>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
-// Enhanced Classic 2D Experience with better performance
-function ClassicExperience() {
+// Enhanced Classic 2D Experience with embedded 3D toggle
+function ClassicExperience({ onToggle3D }) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-cyan-50 via-white to-sky-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
       <PharmHero />
+      <Embedded3DToggle onToggle={onToggle3D} />
       <PharmFeatures />
       <PharmDashboard />
       <PharmPOS />
@@ -176,8 +164,14 @@ class SceneErrorBoundary extends React.Component {
               There was an issue loading the 3D tour. Please try refreshing the page or switch to classic view.
             </p>
             <button 
+              onClick={() => this.props.onBackToClassic()}
+              className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-sky-500 text-white rounded-xl font-semibold hover:shadow-lg transition-all duration-300 mr-4"
+            >
+              Switch to Classic View
+            </button>
+            <button 
               onClick={() => window.location.reload()}
-              className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-sky-500 text-white rounded-xl font-semibold hover:shadow-lg transition-all duration-300"
+              className="px-6 py-3 bg-gray-500 text-white rounded-xl font-semibold hover:shadow-lg transition-all duration-300"
             >
               Refresh Page
             </button>
@@ -217,6 +211,14 @@ export default function PharmAssistPage() {
     preloadResources();
   }, []);
 
+  const handleExperienceToggle = (classicMode) => {
+    setIsClassic(classicMode);
+  };
+
+  const handleBackToClassic = () => {
+    setIsClassic(true);
+  };
+
   // Don't render until client-side and preload complete
   if (!isClient || !preloadComplete) {
     return <SceneLoader />;
@@ -225,22 +227,19 @@ export default function PharmAssistPage() {
   return (
     <div className="relative">
       <NavigationBar />
-      
-      <ExperienceToggle 
-        isClassic={isClassic} 
-        onToggle={() => setIsClassic(!isClassic)} 
-      />
 
-      {isClassic ? (
-        <ClassicExperience />
-      ) : (
-        <SceneErrorBoundary>
+      {/* Render content based on selection */}
+      {!isClassic ? (
+        <SceneErrorBoundary onBackToClassic={handleBackToClassic}>
           <Suspense fallback={<SceneLoader />}>
             <PharmacyScene />
           </Suspense>
         </SceneErrorBoundary>
+      ) : (
+        <ClassicExperience onToggle3D={handleExperienceToggle} />
       )}
 
+      {/* Only show footer for classic experience */}
       {isClassic && <Footer />}
     </div>
   );

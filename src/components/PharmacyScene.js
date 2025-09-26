@@ -1,5 +1,3 @@
-//src/components/PharmacyScene.js
-
 'use client';
 
 import React, { useRef, useState, useEffect, useMemo, Suspense, useCallback } from 'react';
@@ -7,7 +5,7 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Text } from '@react-three/drei';
 import { animated, useSpring } from '@react-spring/three';
 import * as THREE from 'three';
-import { ChevronLeft, ChevronRight, ZoomIn, X } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ZoomIn, X, Menu } from 'lucide-react';
 
 // Screenshot panel data
 const screenshotPanels = [
@@ -15,176 +13,200 @@ const screenshotPanels = [
     id: 'dashboard', 
     title: 'Analytics Dashboard',
     image: '/pharmassist/images/dashboard.jpg',
-    position: [0, 2, -5],
     description: 'Real-time analytics and business insights for your pharmacy operations.'
   },
   { 
     id: 'inventory', 
     title: 'Inventory Management',
     image: '/pharmassist/images/inventory.jpg',
-    position: [0, 2, -5],
     description: 'Complete stock management with automated reordering and expiry tracking.'
   },
   { 
     id: 'pos', 
     title: 'Point of Sale',
     image: '/pharmassist/images/pos.jpg',
-    position: [0, 2, -5],
     description: 'Fast and efficient billing system with prescription management.'
   },
   { 
     id: 'poslayout2', 
     title: 'POS Layout',
     image: '/pharmassist/images/poslayout2.jpg',
-    position: [0, 2, -5],
     description: 'Customizable point-of-sale interface designed for pharmacy workflows.'
   },
   { 
     id: 'purchase', 
     title: 'Purchase Management',
     image: '/pharmassist/images/purchase.jpg',
-    position: [0, 2, -5],
     description: 'Streamlined procurement process with supplier management and cost tracking.'
   },
   { 
     id: 'settings', 
     title: 'System Settings',
     image: '/pharmassist/images/settings.jpg',
-    position: [0, 2, -5],
     description: 'Comprehensive configuration options to customize your pharmacy system.'
   }
 ];
 
-// Pure white elegant pillar component
-const Pillar = React.memo(({ position }) => {
+// Modern marble pillar with professional finish
+const ModernPillar = React.memo(({ position, height = 12 }) => {
   const meshRef = useRef();
 
   useFrame((state) => {
     if (meshRef.current) {
-      // Gentle glow effect
-      meshRef.current.material.emissiveIntensity = 0.2 + Math.sin(state.clock.elapsedTime * 0.8) * 0.1;
+      // Subtle lighting variation
+      meshRef.current.material.emissiveIntensity = 0.05 + Math.sin(state.clock.elapsedTime * 0.3) * 0.02;
     }
   });
 
   return (
-    <mesh ref={meshRef} position={position}>
-      <cylinderGeometry args={[0.5, 0.5, 8, 16]} />
-      <meshStandardMaterial 
-        color="#ffffff" 
-        emissive="#ffffff"
-        emissiveIntensity={0.2}
-        roughness={0.1}
-        metalness={0.1}
-      />
-    </mesh>
-  );
-});
-
-// Radiant white portal background
-const RadiantPortal = React.memo(() => {
-  const portalRef = useRef();
-  const raysRef = useRef();
-
-  useFrame((state) => {
-    if (portalRef.current) {
-      portalRef.current.rotation.z += 0.003;
-    }
-    if (raysRef.current) {
-      raysRef.current.rotation.z -= 0.002;
-    }
-  });
-
-  return (
-    <group position={[0, 2, -40]}>
-      {/* Main portal glow */}
-      <mesh ref={portalRef}>
-        <ringGeometry args={[10, 20, 64]} />
-        <meshBasicMaterial 
-          color="#ffffff"
-          transparent
-          opacity={0.6}
+    <group position={position}>
+      {/* Main pillar */}
+      <mesh ref={meshRef}>
+        <cylinderGeometry args={[0.8, 0.9, height, 16]} />
+        <meshStandardMaterial 
+          color="#f5f5f5" 
+          emissive="#ffffff"
+          emissiveIntensity={0.05}
+          roughness={0.2}
+          metalness={0.1}
         />
       </mesh>
-
-      {/* Outer portal ring */}
-      <mesh>
-        <ringGeometry args={[15, 25, 64]} />
-        <meshBasicMaterial 
-          color="#ffffff"
-          transparent
-          opacity={0.4}
+      
+      {/* Capital */}
+      <mesh position={[0, height/2 + 0.3, 0]}>
+        <cylinderGeometry args={[1.1, 0.8, 0.6, 16]} />
+        <meshStandardMaterial 
+          color="#e8e8e8" 
+          roughness={0.15}
+          metalness={0.2}
         />
       </mesh>
-
-      {/* Light rays */}
-      <group ref={raysRef}>
-        {Array.from({ length: 16 }).map((_, i) => (
-          <mesh
-            key={i}
-            rotation={[0, 0, (i * Math.PI * 2) / 16]}
-            position={[0, 0, 0]}
-          >
-            <planeGeometry args={[0.5, 35]} />
-            <meshBasicMaterial 
-              color="#ffffff"
-              transparent
-              opacity={0.3}
-            />
-          </mesh>
-        ))}
-      </group>
-
-      {/* Central bright light */}
-      <mesh>
-        <circleGeometry args={[8, 32]} />
-        <meshBasicMaterial 
-          color="#ffffff"
-          transparent
-          opacity={0.8}
+      
+      {/* Base */}
+      <mesh position={[0, -height/2 - 0.3, 0]}>
+        <cylinderGeometry args={[0.9, 1.1, 0.6, 16]} />
+        <meshStandardMaterial 
+          color="#e8e8e8" 
+          roughness={0.15}
+          metalness={0.2}
         />
       </mesh>
     </group>
   );
 });
 
-// Floating white particles
-const FloatingParticle = React.memo(({ initialPosition }) => {
-  const meshRef = useRef();
-  const [resetPosition] = useState(initialPosition);
-
-  useFrame((state) => {
-    if (meshRef.current) {
-      // Move toward portal
-      meshRef.current.position.z += 0.03;
-      meshRef.current.position.y += Math.sin(state.clock.elapsedTime * 1.5 + resetPosition[0]) * 0.008;
-      meshRef.current.position.x += Math.cos(state.clock.elapsedTime * 1.2 + resetPosition[1]) * 0.008;
-      
-      // Reset when reaches portal
-      if (meshRef.current.position.z > -5) {
-        meshRef.current.position.set(...resetPosition);
-      }
-    }
-  });
-
+// Professional building hall environment
+const BuildingHallEnvironment = React.memo(() => {
   return (
-    <mesh ref={meshRef} position={initialPosition}>
-      <sphereGeometry args={[0.1, 8, 8]} />
-      <meshBasicMaterial 
-        color="#ffffff"
-        transparent
-        opacity={0.8}
-      />
-    </mesh>
+    <group>
+      {/* Floor - marble pattern */}
+      <mesh position={[0, -6, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+        <planeGeometry args={[100, 100]} />
+        <meshStandardMaterial 
+          color="#f0f0f0"
+          roughness={0.1}
+          metalness={0.3}
+        />
+      </mesh>
+      
+      {/* Ceiling */}
+      <mesh position={[0, 10, 0]} rotation={[Math.PI / 2, 0, 0]}>
+        <planeGeometry args={[100, 100]} />
+        <meshStandardMaterial 
+          color="#ffffff"
+          roughness={0.8}
+        />
+      </mesh>
+
+      {/* Side walls */}
+      <mesh position={[-25, 2, 0]}>
+        <planeGeometry args={[100, 16]} />
+        <meshStandardMaterial 
+          color="#fafafa"
+          roughness={0.7}
+        />
+      </mesh>
+      
+      <mesh position={[25, 2, 0]} rotation={[0, Math.PI, 0]}>
+        <planeGeometry args={[100, 16]} />
+        <meshStandardMaterial 
+          color="#fafafa"
+          roughness={0.7}
+        />
+      </mesh>
+
+      {/* Back wall with gradient effect */}
+      <mesh position={[0, 2, -50]}>
+        <planeGeometry args={[100, 16]} />
+        <meshStandardMaterial 
+          color="#e8e8e8"
+          roughness={0.6}
+        />
+      </mesh>
+
+      {/* Professional pillars in rows */}
+      {Array.from({ length: 6 }).map((_, i) => (
+        <React.Fragment key={i}>
+          <ModernPillar position={[-12, 0, -5 - i * 8]} height={16} />
+          <ModernPillar position={[12, 0, -5 - i * 8]} height={16} />
+        </React.Fragment>
+      ))}
+
+      {/* Professional lighting fixtures */}
+      {Array.from({ length: 8 }).map((_, i) => (
+        <group key={`light-${i}`} position={[0, 8, -8 - i * 6]}>
+          <mesh>
+            <cylinderGeometry args={[1.5, 1.5, 0.3, 8]} />
+            <meshStandardMaterial 
+              color="#ffffff"
+              emissive="#ffffff"
+              emissiveIntensity={0.3}
+            />
+          </mesh>
+          <pointLight
+            position={[0, -2, 0]}
+            intensity={0.8}
+            distance={20}
+            color="#ffffff"
+          />
+        </group>
+      ))}
+
+      {/* Windows on side walls */}
+      {Array.from({ length: 4 }).map((_, i) => (
+        <React.Fragment key={`windows-${i}`}>
+          <mesh position={[-24.5, 4, -10 - i * 10]}>
+            <planeGeometry args={[3, 6]} />
+            <meshStandardMaterial 
+              color="#87CEEB"
+              transparent
+              opacity={0.7}
+              emissive="#ffffff"
+              emissiveIntensity={0.1}
+            />
+          </mesh>
+          <mesh position={[24.5, 4, -10 - i * 10]} rotation={[0, Math.PI, 0]}>
+            <planeGeometry args={[3, 6]} />
+            <meshStandardMaterial 
+              color="#87CEEB"
+              transparent
+              opacity={0.7}
+              emissive="#ffffff"
+              emissiveIntensity={0.1}
+            />
+          </mesh>
+        </React.Fragment>
+      ))}
+    </group>
   );
 });
 
-// 3D Preview panel positioned far away in front of pillars
+// 3D Preview panel 
 const PreviewPanel = React.memo(({ panel, isVisible, onClick, position }) => {
   const meshRef = useRef();
   const [hovered, setHovered] = useState(false);
   const [textureError, setTextureError] = useState(false);
 
-  // Load texture
   const texture = useMemo(() => {
     const loader = new THREE.TextureLoader();
     const tex = loader.load(
@@ -198,16 +220,14 @@ const PreviewPanel = React.memo(({ panel, isVisible, onClick, position }) => {
   }, [panel.image]);
 
   const { scale, opacity } = useSpring({
-    scale: isVisible ? (hovered ? 1.1 : 1) : 0,
-    opacity: isVisible ? 0.7 : 0,
+    scale: isVisible ? (hovered ? 1.05 : 1) : 0,
+    opacity: isVisible ? 0.9 : 0,
     config: { tension: 200, friction: 25 }
   });
 
   useFrame((state) => {
     if (meshRef.current && isVisible) {
-      // Gentle floating
-      meshRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime * 1.2) * 0.03;
-      // Always face camera
+      meshRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime * 0.8) * 0.02;
       meshRef.current.lookAt(state.camera.position);
     }
   });
@@ -216,20 +236,18 @@ const PreviewPanel = React.memo(({ panel, isVisible, onClick, position }) => {
 
   return (
     <group position={position}>
-      {/* Soft glow effect */}
       <animated.mesh
-        scale={scale.to(s => s * 1.05)}
-        position={[0, 0, -0.02]}
+        scale={scale.to(s => s * 1.02)}
+        position={[0, 0, -0.01]}
       >
-        <planeGeometry args={[3.2, 2.2]} />
-        <meshBasicMaterial 
-          color="#ffffff" 
+        <planeGeometry args={[4.2, 3.2]} />
+        <meshStandardMaterial 
+          color="#333333" 
           transparent 
-          opacity={0.2}
+          opacity={0.1}
         />
       </animated.mesh>
 
-      {/* Preview panel */}
       <animated.mesh
         ref={meshRef}
         scale={scale}
@@ -237,7 +255,7 @@ const PreviewPanel = React.memo(({ panel, isVisible, onClick, position }) => {
         onPointerOver={() => setHovered(true)}
         onPointerOut={() => setHovered(false)}
       >
-        <planeGeometry args={[3, 2]} />
+        <planeGeometry args={[4, 3]} />
         {!textureError ? (
           <animated.meshStandardMaterial 
             map={texture}
@@ -253,136 +271,70 @@ const PreviewPanel = React.memo(({ panel, isVisible, onClick, position }) => {
         )}
       </animated.mesh>
 
-      {/* "Next" label above panel */}
       <Text
-        position={[0, 1.3, 0]}
-        fontSize={0.15}
-        color="#666666"
+        position={[0, 1.8, 0.01]}
+        fontSize={0.2}
+        color="#333333"
         anchorX="center"
         anchorY="middle"
-        maxWidth={3}
+        maxWidth={4}
+        font="/fonts/inter-bold.woff"
       >
-        Next
-      </Text>
-
-      {/* Title below panel */}
-      <Text
-        position={[0, -1.3, 0]}
-        fontSize={0.12}
-        color="#888888"
-        anchorX="center"
-        anchorY="middle"
-        maxWidth={3}
-      >
-        {panel.title}
+        Next: {panel.title}
       </Text>
     </group>
   );
 });
 
-// Enhanced white environment
-const HeavenlyEnvironment = React.memo(() => {
-  return (
-    <group>
-      {/* Radiant portal in background */}
-      <RadiantPortal />
-
-      {/* Pure white background planes for depth */}
-      <mesh position={[0, 2, -50]}>
-        <planeGeometry args={[150, 100]} />
-        <meshBasicMaterial 
-          color="#ffffff"
-          transparent
-          opacity={0.8}
-        />
-      </mesh>
-
-      <mesh position={[0, 2, -45]}>
-        <planeGeometry args={[120, 80]} />
-        <meshBasicMaterial 
-          color="#f8f9fa"
-          transparent
-          opacity={0.6}
-        />
-      </mesh>
-
-      {/* White marble-like pillars */}
-      {Array.from({ length: 8 }).map((_, i) => (
-        <React.Fragment key={i}>
-          <Pillar position={[-8, 0, -2 - i * 3]} />
-          <Pillar position={[8, 0, -2 - i * 3]} />
-        </React.Fragment>
-      ))}
-
-      {/* Floating white particles */}
-      {Array.from({ length: 50 }).map((_, i) => (
-        <FloatingParticle
-          key={i}
-          initialPosition={[
-            (Math.random() - 0.5) * 30,
-            Math.random() * 12 + 1,
-            -Math.random() * 35 - 10
-          ]}
-        />
-      ))}
-
-      {/* Additional ambient light particles */}
-      {Array.from({ length: 80 }).map((_, i) => (
-        <mesh
-          key={`ambient-${i}`}
-          position={[
-            (Math.random() - 0.5) * 50,
-            Math.random() * 18,
-            -Math.random() * 60 - 5
-          ]}
-        >
-          <sphereGeometry args={[0.05, 6, 6]} />
-          <meshBasicMaterial 
-            color="#ffffff"
-            transparent 
-            opacity={0.6}
-          />
-        </mesh>
-      ))}
-    </group>
-  );
-});
-
-// Camera controller - moves forward with each step
+// Camera controller
 const CameraController = React.memo(({ currentStep, onComplete }) => {
   const { camera } = useThree();
   
   const { position } = useSpring({
-    position: [0, 3, 2 - (currentStep * 3)], // Move forward 3 units each step
-    config: { tension: 80, friction: 60 },
+    position: [0, 3, 2 - (currentStep * 4)],
+    config: { tension: 100, friction: 80 },
     onRest: onComplete
   });
 
   useFrame(() => {
     const pos = position.get();
     camera.position.set(pos[0], pos[1], pos[2]);
-    camera.lookAt(0, 2, pos[2] - 8); // Look ahead
+    camera.lookAt(0, 2, pos[2] - 10);
   });
 
   return null;
 });
 
+// Hook for mobile detection
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+    return () => window.removeEventListener('resize', checkIsMobile);
+  }, []);
+
+  return isMobile;
+};
+
 // Main component
-function HeavenlyPharmacyWalkthrough() {
+function ProfessionalPharmacyWalkthrough() {
   const [currentStep, setCurrentStep] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [selectedPanel, setSelectedPanel] = useState(null);
   const [showFullscreen, setShowFullscreen] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const isMobile = useIsMobile();
 
   const goNext = useCallback(() => {
     if (currentStep < screenshotPanels.length - 1 && !isAnimating) {
       setIsAnimating(true);
       setCurrentStep(prev => prev + 1);
-      setSelectedPanel(null);
-      // Reset animation state
-      const timer = setTimeout(() => {
-        setIsAnimating(false);
-      }, 300);
+      const timer = setTimeout(() => setIsAnimating(false), 300);
       return () => clearTimeout(timer);
     }
   }, [currentStep, screenshotPanels.length, isAnimating]);
@@ -391,23 +343,12 @@ function HeavenlyPharmacyWalkthrough() {
     if (currentStep > 0 && !isAnimating) {
       setIsAnimating(true);
       setCurrentStep(prev => prev - 1);
-      setSelectedPanel(null);
-      // Reset animation state
-      const timer = setTimeout(() => {
-        setIsAnimating(false);
-      }, 300);
+      const timer = setTimeout(() => setIsAnimating(false), 300);
       return () => clearTimeout(timer);
     }
   }, [currentStep, isAnimating]);
 
-  const handlePanelClick = useCallback(() => {
-    // No panel click needed since image is always in corner
-    return;
-  }, []);
-
-  // Get current panel and determine if it should be on left or right
   const currentPanel = screenshotPanels[currentStep];
-  const isRightSide = currentStep % 2 === 0; // Even steps = right, odd steps = left
 
   // Keyboard controls
   useEffect(() => {
@@ -425,39 +366,26 @@ function HeavenlyPharmacyWalkthrough() {
           goPrevious();
           break;
         case 'Escape':
-          if (showFullscreen) {
-            setShowFullscreen(false);
-          }
-          break;
-        case 'f':
-        case 'F':
-          setShowFullscreen(true);
+          if (showFullscreen) setShowFullscreen(false);
+          if (showMobileMenu) setShowMobileMenu(false);
           break;
       }
     };
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [goNext, goPrevious, showFullscreen]);
+  }, [goNext, goPrevious, showFullscreen, showMobileMenu]);
 
   return (
-    <div className="relative w-full h-screen bg-gradient-to-b from-white via-gray-100 to-gray-200">
-      {/* Pure white radial gradient overlay */}
-      <div 
-        className="absolute inset-0 z-0"
-        style={{
-          background: 'radial-gradient(ellipse at center, rgba(255, 255, 255, 0.9) 0%, rgba(248, 249, 250, 0.8) 50%, rgba(229, 231, 235, 0.9) 100%)'
-        }}
-      />
-      
+    <div className="relative w-full h-screen bg-gradient-to-b from-gray-50 via-gray-100 to-gray-200 overflow-hidden">
       <Canvas
-        camera={{ position: [0, 3, 2], fov: 75 }}
+        camera={{ position: [0, 3, 2], fov: isMobile ? 85 : 75 }}
         gl={{ 
           antialias: true,
           powerPreference: "high-performance"
         }}
         onCreated={({ gl }) => {
-          gl.setClearColor('#ffffff', 1);
+          gl.setClearColor('#f5f5f5', 1);
           gl.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         }}
       >
@@ -466,170 +394,194 @@ function HeavenlyPharmacyWalkthrough() {
           onComplete={() => setIsAnimating(false)} 
         />
         
-        {/* Bright white lighting setup */}
-        <ambientLight intensity={1.2} color="#ffffff" />
+        {/* Professional lighting */}
+        <ambientLight intensity={0.6} color="#ffffff" />
         <directionalLight
-          position={[0, 15, -30]}
-          intensity={2}
-          color="#ffffff"
-        />
-        <pointLight
-          position={[0, 10, -15]}
-          intensity={1.5}
-          distance={80}
-          color="#ffffff"
-        />
-        <pointLight
-          position={[-10, 8, 0]}
+          position={[10, 20, 10]}
           intensity={1}
-          distance={40}
           color="#ffffff"
+          castShadow
         />
         <pointLight
-          position={[10, 8, 0]}
-          intensity={1}
-          distance={40}
+          position={[0, 8, 0]}
+          intensity={0.8}
+          distance={50}
           color="#ffffff"
         />
 
-        {/* Heavenly white environment */}
-        <HeavenlyEnvironment />
+        {/* Building hall environment */}
+        <BuildingHallEnvironment />
 
-        {/* 3D Preview panel positioned far away */}
+        {/* Next panel preview */}
         <Suspense fallback={null}>
           {currentStep < screenshotPanels.length - 1 && (
             <PreviewPanel
               panel={screenshotPanels[currentStep + 1]}
               isVisible={true}
               onClick={goNext}
-              position={[
-                isRightSide ? -4 : 4, // Opposite side from current camera view
-                2.5, 
-                2 - (currentStep * 3) - 12 // Far ahead of camera, in front of pillars
-              ]}
+              position={[0, 3, 2 - (currentStep * 4) - 15]}
             />
           )}
         </Suspense>
 
-        {/* Welcome text */}
+        {/* Title text */}
         <Text
-          position={[0, 6, 0]}
-          fontSize={0.8}
-          color="#333333"
+          position={[0, 7, 0]}
+          fontSize={isMobile ? 0.6 : 1}
+          color="#1f2937"
           anchorX="center"
           anchorY="middle"
           maxWidth={12}
         >
-          PharmAssist - Journey to Excellence
+          PharmAssist Professional Suite
+        </Text>
+        
+        <Text
+          position={[0, 6, 0]}
+          fontSize={isMobile ? 0.25 : 0.4}
+          color="#6b7280"
+          anchorX="center"
+          anchorY="middle"
+          maxWidth={15}
+        >
+          Comprehensive Pharmacy Management Solutions
         </Text>
       </Canvas>
 
-      {/* Clean white navigation UI */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
-        <div className="flex items-center space-x-6 bg-white/90 backdrop-blur-lg rounded-full px-8 py-4 border border-gray-200 shadow-xl">
-          <button
-            onClick={goPrevious}
-            disabled={currentStep === 0 || isAnimating}
-            className={`p-4 rounded-full transition-all duration-300 ${
-              currentStep === 0 || isAnimating
-                ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                : 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700 shadow-lg hover:shadow-blue-500/25'
-            }`}
-          >
-            <ChevronLeft className="w-6 h-6" />
-          </button>
+      {/* Mobile menu toggle */}
+      {isMobile && (
+        <button
+          onClick={() => setShowMobileMenu(!showMobileMenu)}
+          className="absolute top-4 right-4 z-20 p-3 bg-white/90 backdrop-blur-sm rounded-full shadow-lg border border-gray-200"
+        >
+          <Menu className="w-6 h-6 text-gray-700" />
+        </button>
+      )}
 
-          {/* Progress dots */}
-          <div className="flex space-x-3">
-            {screenshotPanels.map((_, index) => (
-              <div
-                key={index}
-                className={`w-3 h-3 rounded-full transition-all duration-500 ${
-                  index === currentStep
-                    ? 'bg-gradient-to-r from-blue-500 to-purple-600 scale-150 shadow-lg shadow-blue-500/50'
-                    : index < currentStep
-                    ? 'bg-blue-300 scale-110 shadow-sm shadow-blue-300/30'
-                    : 'bg-gray-300'
-                }`}
-              />
-            ))}
+      {/* Navigation UI - responsive */}
+      <div className={`absolute ${
+        isMobile 
+          ? `${showMobileMenu ? 'bottom-4' : '-bottom-20'} left-4 right-4 transition-all duration-300`
+          : 'bottom-8 left-1/2 transform -translate-x-1/2'
+      } z-10`}>
+        <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6 bg-white/95 backdrop-blur-lg rounded-2xl px-6 py-4 border border-gray-200/50 shadow-xl">
+          
+          {/* Progress info - mobile friendly */}
+          <div className="text-center sm:order-2">
+            <div className="flex items-center justify-center space-x-2 mb-2">
+              {screenshotPanels.map((_, index) => (
+                <div
+                  key={index}
+                  className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-500 ${
+                    index === currentStep
+                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 scale-125 shadow-lg shadow-blue-500/50'
+                      : index < currentStep
+                      ? 'bg-blue-300 scale-110'
+                      : 'bg-gray-300'
+                  }`}
+                />
+              ))}
+            </div>
+            <p className="text-xs sm:text-sm text-gray-600">
+              {currentStep + 1} of {screenshotPanels.length}
+            </p>
           </div>
 
-          <button
-            onClick={goNext}
-            disabled={currentStep === screenshotPanels.length - 1 || isAnimating}
-            className={`p-4 rounded-full transition-all duration-300 ${
-              currentStep === screenshotPanels.length - 1 || isAnimating
-                ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                : 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700 shadow-lg hover:shadow-blue-500/25'
-            }`}
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
-        </div>
+          {/* Navigation buttons */}
+          <div className="flex items-center space-x-4 sm:order-1">
+            <button
+              onClick={goPrevious}
+              disabled={currentStep === 0 || isAnimating}
+              className={`p-3 sm:p-4 rounded-full transition-all duration-300 ${
+                currentStep === 0 || isAnimating
+                  ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                  : 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700 shadow-lg hover:shadow-blue-500/25'
+              }`}
+            >
+              <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+            </button>
 
-        <div className="text-center mt-4">
-          <p className="text-sm text-gray-600 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 border border-gray-200">
-            Image {currentStep + 1} of {screenshotPanels.length} • Use ← → keys or click image
-          </p>
+            <button
+              onClick={goNext}
+              disabled={currentStep === screenshotPanels.length - 1 || isAnimating}
+              className={`p-3 sm:p-4 rounded-full transition-all duration-300 ${
+                currentStep === screenshotPanels.length - 1 || isAnimating
+                  ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                  : 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700 shadow-lg hover:shadow-blue-500/25'
+              }`}
+            >
+              <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+            </button>
+          </div>
+
+          <div className="sm:order-3">
+            <p className="text-xs text-gray-500 text-center sm:text-left">
+              Use ← → keys to navigate
+            </p>
+          </div>
         </div>
       </div>
 
-      {/* Always show current image in alternating corners - BIGGER SIZE */}
-      <div className={`absolute top-4 max-w-2xl z-10 transition-all duration-500 ${
-        isRightSide ? 'right-4' : 'left-4'
-      }`}>
-        <div className="bg-white/95 backdrop-blur-lg rounded-2xl p-6 border border-gray-200 shadow-xl">
+      {/* Current image display - responsive */}
+      <div className={`absolute ${
+        isMobile 
+          ? 'top-16 left-4 right-4 max-w-none'
+          : 'top-4 right-4 max-w-md xl:max-w-lg'
+      } z-10 transition-all duration-500`}>
+        <div className="bg-white/95 backdrop-blur-lg rounded-2xl p-4 sm:p-6 border border-gray-200/50 shadow-xl">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-xl font-bold text-gray-800">
+            <h3 className="text-lg sm:text-xl font-bold text-gray-800 truncate">
               {currentPanel.title}
             </h3>
-            <div className="flex space-x-2">
-              <button
-                onClick={() => setShowFullscreen(true)}
-                className="p-2 text-gray-500 hover:text-blue-600 transition-colors rounded-full hover:bg-gray-100"
-              >
-                <ZoomIn className="w-4 h-4" />
-              </button>
-            </div>
+            <button
+              onClick={() => setShowFullscreen(true)}
+              className="p-2 text-gray-500 hover:text-blue-600 transition-colors rounded-full hover:bg-gray-100"
+            >
+              <ZoomIn className="w-4 h-4 sm:w-5 sm:h-5" />
+            </button>
           </div>
+          
           <div className="mb-4">
             <img 
               src={currentPanel.image}
               alt={currentPanel.title}
-              className="w-full h-80 object-cover rounded-xl border border-gray-200"
+              className={`w-full ${
+                isMobile ? 'h-48' : 'h-64 lg:h-80'
+              } object-cover rounded-xl border border-gray-200`}
               onError={(e) => {
                 e.target.style.display = 'none';
               }}
             />
           </div>
-          <p className="text-gray-700 leading-relaxed text-sm">
+          
+          <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
             {currentPanel.description}
           </p>
         </div>
       </div>
 
-      {/* Fullscreen viewer */}
+      {/* Fullscreen viewer - responsive */}
       {showFullscreen && (
-        <div className="fixed inset-0 bg-white/95 backdrop-blur-md z-50 flex items-center justify-center p-8">
-          <div className="relative max-w-7xl w-full">
+        <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="relative w-full max-w-6xl max-h-full">
             <button
               onClick={() => setShowFullscreen(false)}
-              className="absolute top-6 right-6 p-4 bg-white/90 backdrop-blur-sm text-gray-700 rounded-full hover:bg-white border border-gray-200 z-10 shadow-lg"
+              className="absolute top-4 right-4 p-3 bg-white/90 backdrop-blur-sm text-gray-700 rounded-full hover:bg-white border border-gray-200 z-10 shadow-lg"
             >
               <X className="w-6 h-6" />
             </button>
-            <div className="bg-white/95 backdrop-blur-lg rounded-3xl overflow-hidden border border-gray-200 shadow-2xl">
+            
+            <div className="bg-white/95 backdrop-blur-lg rounded-2xl overflow-hidden border border-gray-200 shadow-2xl max-h-full overflow-y-auto">
               <img 
                 src={currentPanel.image}
                 alt={currentPanel.title}
-                className="w-full max-h-[75vh] object-contain"
+                className="w-full max-h-[70vh] object-contain"
               />
-              <div className="p-8">
-                <h2 className="text-3xl font-bold text-gray-800 mb-3">
+              <div className="p-6 sm:p-8">
+                <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-3">
                   {currentPanel.title}
                 </h2>
-                <p className="text-gray-700 text-lg">
+                <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
                   {currentPanel.description}
                 </p>
               </div>
@@ -641,4 +593,4 @@ function HeavenlyPharmacyWalkthrough() {
   );
 }
 
-export default HeavenlyPharmacyWalkthrough;
+export default ProfessionalPharmacyWalkthrough;

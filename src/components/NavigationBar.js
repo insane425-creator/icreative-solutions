@@ -28,7 +28,7 @@ export default function NavigationBar() {
         { href: '/#products', label: 'All Products', description: 'View all solutions' }
       ]
     },
-    { href: '/#about', label: 'About' },
+    { href: '/about', label: 'About' },
     { href: '/#contact', label: 'Contact' },
   ];
 
