@@ -1,0 +1,1265 @@
+# iCreative Hub - Complete Next.js Project
+
+## Project Structure
+```
+icreative-hub/
+├── package.json
+├── next.config.js
+├── tailwind.config.js
+├── postcss.config.js
+├── .gitignore
+├── README.md
+├── public/
+│   ├── favicon.ico
+│   └── logo.png
+├── src/
+│   ├── app/
+│   │   ├── layout.js
+│   │   ├── page.js
+│   │   ├── globals.css
+│   │   ├── about/
+│   │   │   └── page.js
+│   │   ├── products/
+│   │   │   └── page.js
+│   │   └── contact/
+│   │   |   └── page.js
+|   |   |___pharmassist/
+            |___page.js
+│   ├── components/
+│   │   ├── NavigationBar.js
+│   │   ├── Hero.js
+│   │   ├── Features.js
+│   │   ├── Products.js
+│   │   ├── About.js
+│   │   ├── Contact.js
+│   │   └── Footer.js
+|   |   |__PharmacyScene.js
+│   └── hooks/
+│       └── useTheme.js
+```
+
+---
+
+## package.json
+```json
+{
+  "name": "icreative-hub",
+  "version": "1.0.0",
+  "description": "iCreative Solutions - Modern SaaS Hub Website",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "^14.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "lucide-react": "^0.263.1",
+    "clsx": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.0.0",
+    "eslint-config-next": "^14.0.0",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.5"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
+```
+
+---
+
+## next.config.js
+```javascript
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  images: {
+    domains: ['images.unsplash.com', 'via.placeholder.com'],
+  },
+}
+
+module.exports = nextConfig
+```
+
+---
+
+## tailwind.config.js
+```javascript
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50: '#eff6ff',
+          100: '#dbeafe',
+          200: '#bfdbfe',
+          300: '#93c5fd',
+          400: '#60a5fa',
+          500: '#3b82f6',
+          600: '#2563eb',
+          700: '#1d4ed8',
+          800: '#1e40af',
+          900: '#1e3a8a',
+        },
+        purple: {
+          50: '#faf5ff',
+          100: '#f3e8ff',
+          200: '#e9d5ff',
+          300: '#d8b4fe',
+          400: '#c084fc',
+          500: '#a855f7',
+          600: '#9333ea',
+          700: '#7c3aed',
+          800: '#6b21a8',
+          900: '#581c87',
+        },
+      },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+      },
+      animation: {
+        'fade-in': 'fadeIn 0.5s ease-in-out',
+        'slide-up': 'slideUp 0.5s ease-out',
+        'pulse-slow': 'pulse 3s infinite',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        slideUp: {
+          '0%': { transform: 'translateY(20px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+      },
+    },
+  },
+  plugins: [],
+}
+```
+
+---
+
+## postcss.config.js
+```javascript
+module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+}
+```
+
+---
+
+## .gitignore
+```
+# Dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# Testing
+/coverage
+
+# Next.js
+/.next/
+/out/
+
+# Production
+/build
+
+# Misc
+.DS_Store
+*.pem
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local env files
+.env*.local
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+```
+
+---
+
+## README.md
+```markdown
+# iCreative Solutions Hub
+
+Modern SaaS hub website for iCreative Solutions, showcasing PharmAssist and GrowAssist POS solutions for Pakistani businesses.
+
+## Features
+
+- 🎨 Modern, responsive design with dark/light mode
+- ⚡ Built with Next.js 14 and Tailwind CSS
+- 📱 Mobile-first responsive design
+- 🚀 Optimized for Vercel deployment
+- 🎯 Pakistani business-focused content
+
+## Getting Started
+
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Run development server: `npm run dev`
+4. Open [http://localhost:3000](http://localhost:3000)
+
+## Deployment
+
+This project is ready for deployment on Vercel:
+
+```bash
+npm run build
+```
+
+Or deploy directly to Vercel by connecting your GitHub repository.
+
+## Tech Stack
+
+- Next.js 14
+- React 18
+- Tailwind CSS
+- Lucide React Icons
+- Vercel (deployment)
+```
+
+---
+
+## src/hooks/useTheme.js
+```javascript
+'use client';
+
+import { useState, useEffect } from 'react';
+
+export function useTheme() {
+  const [theme, setTheme] = useState('light');
+
+  useEffect(() => {
+    // Check localStorage or system preference
+    const savedTheme = localStorage.getItem('theme');
+    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    const initialTheme = savedTheme || systemTheme;
+    
+    setTheme(initialTheme);
+    document.documentElement.classList.toggle('dark', initialTheme === 'dark');
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+    document.documentElement.classList.toggle('dark', newTheme === 'dark');
+  };
+
+  return { theme, toggleTheme, isDark: theme === 'dark' };
+}
+```
+
+---
+
+## src/app/layout.js
+```javascript
+import { Inter } from 'next/font/google'
+import './globals.css'
+
+const inter = Inter({ subsets: ['latin'] })
+
+export const metadata = {
+  title: 'iCreative Solutions - Smarter POS Solutions for Pakistani Businesses',
+  description: 'Empowering pharmacies and grocery stores with intelligent, user-friendly point-of-sale systems designed specifically for local business needs.',
+  keywords: 'POS, Pakistan, Pharmacy, Grocery, Point of Sale, Business Software',
+  authors: [{ name: 'iCreative Solutions' }],
+  openGraph: {
+    title: 'iCreative Solutions - Smarter POS Solutions',
+    description: 'Intelligent POS systems for Pakistani businesses',
+    url: 'https://icreative.vercel.app',
+    siteName: 'iCreative Solutions',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'iCreative Solutions - Smarter POS Solutions',
+    description: 'Intelligent POS systems for Pakistani businesses',
+  },
+}
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body className={inter.className}>
+        {children}
+      </body>
+    </html>
+  )
+}
+```
+
+---
+
+## src/app/globals.css
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+[data-theme="dark"] {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-400 dark:bg-gray-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-500 dark:bg-gray-500;
+}
+
+/* Custom animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Glassmorphism effect */
+.glass {
+  @apply bg-white/10 backdrop-blur-md border border-white/20;
+}
+
+.glass-dark {
+  @apply bg-black/10 backdrop-blur-md border border-black/20;
+}
+
+/* Gradient text */
+.gradient-text {
+  @apply bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent;
+}
+
+/* Button hover effects */
+.btn-primary {
+  @apply bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl;
+}
+
+.btn-secondary {
+  @apply px-6 py-3 rounded-lg font-semibold border-2 border-gray-300 text-gray-700 hover:border-blue-500 hover:text-blue-600 dark:border-gray-600 dark:text-gray-300 dark:hover:border-blue-500 dark:hover:text-blue-400 transition-all duration-300 transform hover:scale-105;
+}
+```
+
+---
+
+## src/components/NavigationBar.js
+```javascript
+'use client';
+
+import { useState, useEffect } from 'react';
+import { Moon, Sun, Menu, X } from 'lucide-react';
+import { useTheme } from '../hooks/useTheme';
+
+export default function NavigationBar() {
+  const { isDark, toggleTheme } = useTheme();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navLinks = [
+    { href: '#home', label: 'Home' },
+    { href: '#products', label: 'Products' },
+    { href: '#about', label: 'About' },
+    { href: '#contact', label: 'Contact' },
+  ];
+
+  return (
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      scrolled 
+        ? 'bg-white/95 dark:bg-gray-900/95 border-b border-gray-200 dark:border-gray-800 backdrop-blur-md' 
+        : 'bg-transparent'
+    }`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <div className="flex items-center space-x-3">
+            <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-lg">iC</span>
+            </div>
+            <span className="text-xl font-bold gradient-text">
+              iCreative Solutions
+            </span>
+          </div>
+          
+          {/* Desktop NavigationBar */}
+          <div className="hidden md:flex items-center space-x-8">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
+              >
+                {link.label}
+              </a>
+            ))}
+            
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 hover:scale-110"
+            >
+              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </button>
+          </div>
+          
+          {/* Mobile Menu Button */}
+          <div className="md:hidden flex items-center space-x-2">
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-lg text-gray-600 dark:text-gray-400"
+            >
+              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </button>
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="p-2 rounded-lg text-gray-600 dark:text-gray-400"
+            >
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
+        </div>
+        
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 py-4">
+            <div className="flex flex-col space-y-4">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </nav>
+  );
+}
+```
+
+---
+
+## src/components/Hero.js
+```javascript
+'use client';
+
+import { ArrowRight, Zap } from 'lucide-react';
+
+export default function Hero() {
+  const handleExploreProducts = () => {
+    document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleRequestDemo = () => {
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  return (
+    <section id="home" className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center animate-fade-in-up">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 text-blue-800 dark:text-blue-300 text-sm font-medium mb-8 animate-pulse-slow">
+            <Zap className="w-4 h-4 mr-2" />
+            Revolutionizing POS Solutions in Pakistan
+          </div>
+          
+          <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight">
+            <span className="gradient-text">
+              Smarter POS Solutions
+            </span>
+            <br />
+            <span className="text-gray-900 dark:text-white">
+              for Pakistani Businesses
+            </span>
+          </h1>
+          
+          <p className="text-xl md:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed text-gray-600 dark:text-gray-300">
+            Empowering pharmacies and grocery stores with intelligent, 
+            user-friendly point-of-sale systems designed specifically for local business needs.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+            <button 
+              onClick={handleExploreProducts}
+              className="w-full sm:w-auto btn-primary flex items-center justify-center space-x-2"
+            >
+              <span>Explore Our Products</span>
+              <ArrowRight className="w-5 h-5" />
+            </button>
+            
+            <button 
+              onClick={handleRequestDemo}
+              className="w-full sm:w-auto btn-secondary"
+            >
+              Request Demo
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+```
+
+---
+
+## src/components/Features.js
+```javascript
+'use client';
+
+import { Zap, Shield, BarChart3 } from 'lucide-react';
+
+const features = [
+  {
+    icon: Zap,
+    title: "Lightning Fast",
+    description: "Optimized for speed and efficiency, ensuring smooth operations even during peak hours."
+  },
+  {
+    icon: Shield,
+    title: "Secure & Reliable",
+    description: "Bank-grade security with regular backups and 99.9% uptime guarantee for your peace of mind."
+  },
+  {
+    icon: BarChart3,
+    title: "Smart Analytics",
+    description: "Comprehensive reporting and insights to help you make data-driven business decisions."
+  }
+];
+
+function FeatureCard({ icon: Icon, title, description }) {
+  return (
+    <div className="p-6 rounded-xl bg-white/80 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:shadow-lg">
+      <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center mb-4">
+        <Icon className="w-6 h-6 text-white" />
+      </div>
+      <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
+        {title}
+      </h3>
+      <p className="text-gray-600 dark:text-gray-300">
+        {description}
+      </p>
+    </div>
+  );
+}
+
+export default function Features() {
+  return (
+    <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+            Why Choose iCreative Solutions?
+          </h2>
+          <p className="text-xl max-w-2xl mx-auto text-gray-600 dark:text-gray-300">
+            Built with Pakistani businesses in mind, our solutions combine modern technology with local market understanding.
+          </p>
+        </div>
+        
+        <div className="grid md:grid-cols-3 gap-8">
+          {features.map((feature, index) => (
+            <FeatureCard
+              key={index}
+              icon={feature.icon}
+              title={feature.title}
+              description={feature.description}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+```
+
+---
+
+## src/components/Products.js
+```javascript
+'use client';
+
+import { ArrowRight, Users } from 'lucide-react';
+
+const products = [
+  {
+    title: "PharmAssist",
+    description: "Complete pharmacy management system with inventory tracking, prescription management, and regulatory compliance.",
+    features: [
+      "Prescription & inventory management",
+      "Expiry date tracking & alerts",
+      "Customer health records",
+      "Insurance & billing integration",
+      "Regulatory compliance tools"
+    ],
+    demoLink: "https://pharmassist.vercel.app",
+    comingSoon: false
+  },
+  {
+    title: "GrowAssist",
+    description: "Comprehensive grocery store POS with advanced inventory management and customer loyalty programs.",
+    features: [
+      "Multi-category inventory management",
+      "Barcode scanning & pricing",
+      "Customer loyalty programs",
+      "Supplier management",
+      "Sales analytics & reporting"
+    ],
+    demoLink: "https://growassist.vercel.app",
+    comingSoon: false
+  }
+];
+
+function ProductCard({ title, description, features, comingSoon = false, demoLink }) {
+  const handleViewProduct = () => {
+    if (!comingSoon && demoLink) {
+      window.open(demoLink, '_blank');
+    }
+  };
+
+  const handleRequestDemo = () => {
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  return (
+    <div className="group relative overflow-hidden rounded-2xl p-8 bg-white/80 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 hover:border-blue-400/50 dark:hover:border-blue-500/50 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105">
+      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      
+      <div className="relative z-10">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+            {title}
+          </h3>
+          {comingSoon && (
+            <span className="px-3 py-1 text-xs font-semibold rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white">
+              Coming Soon
+            </span>
+          )}
+        </div>
+        
+        <p className="text-lg mb-6 text-gray-600 dark:text-gray-300">
+          {description}
+        </p>
+        
+        <div className="space-y-3 mb-8">
+          {features.map((feature, index) => (
+            <div key={index} className="flex items-center space-x-3">
+              <div className="w-2 h-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500" />
+              <span className="text-gray-600 dark:text-gray-300">
+                {feature}
+              </span>
+            </div>
+          ))}
+        </div>
+        
+        <div className="flex space-x-4">
+          <button 
+            onClick={handleViewProduct}
+            className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2 disabled:opacity-50"
+            disabled={comingSoon}
+          >
+            <span>{comingSoon ? 'Coming Soon' : 'View Product'}</span>
+            {!comingSoon && <ArrowRight className="w-4 h-4" />}
+          </button>
+          
+          <button 
+            onClick={handleRequestDemo}
+            className="px-6 py-3 rounded-lg font-semibold border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-blue-500 hover:text-blue-600 dark:hover:border-blue-500 dark:hover:text-blue-400 transition-all duration-300 hover:scale-105"
+          >
+            Request Demo
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function Products() {
+  return (
+    <section id="products" className="py-20 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+            Our Product Suite
+          </h2>
+          <p className="text-xl max-w-2xl mx-auto text-gray-600 dark:text-gray-300">
+            Specialized POS solutions tailored for different business sectors across Pakistan.
+          </p>
+        </div>
+        
+        <div className="grid lg:grid-cols-2 gap-8">
+          {products.map((product, index) => (
+            <ProductCard
+              key={index}
+              title={product.title}
+              description={product.description}
+              features={product.features}
+              demoLink={product.demoLink}
+              comingSoon={product.comingSoon}
+            />
+          ))}
+        </div>
+        
+        {/* Future Products Placeholder */}
+        <div className="mt-16">
+          <div className="text-center p-8 rounded-2xl border-2 border-dashed border-gray-300 dark:border-gray-700 bg-gray-50/50 dark:bg-gray-800/30 transition-colors">
+            <Users className="w-12 h-12 mx-auto mb-4 text-gray-500 dark:text-gray-400" />
+            <h3 className="text-2xl font-semibold mb-2 text-gray-900 dark:text-white">
+              More Solutions Coming Soon
+            </h3>
+            <p className="text-lg text-gray-600 dark:text-gray-300">
+              We're constantly expanding our product suite to serve more Pakistani businesses. 
+              Stay tuned for RestaurantAssist, RetailAssist, and more!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+```
+
+---
+
+## src/components/About.js
+```javascript
+export default function About() {
+  const stats = [
+    { value: "100+", label: "Businesses Served" },
+    { value: "99.9%", label: "Uptime Guarantee" },
+    { value: "24/7", label: "Support Available" }
+  ];
+
+  return (
+    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold mb-6 text-gray-900 dark:text-white">
+            About iCreative Solutions
+          </h2>
+          
+          <div className="text-lg leading-relaxed space-y-6 text-gray-600 dark:text-gray-300">
+            <p>
+              Founded with a vision to digitally transform Pakistani businesses, iCreative Solutions 
+              specializes in creating intelligent, user-friendly POS systems that understand local 
+              market dynamics and business requirements.
+            </p>
+            
+            <p>
+              Our team combines deep technical expertise with extensive knowledge of Pakistani business 
+              operations, ensuring our solutions are not just technologically advanced but also 
+              practically relevant for local entrepreneurs.
+            </p>
+            
+            <p>
+              We believe that every business, regardless of size, deserves access to modern technology 
+              that can streamline operations, improve customer experience, and drive growth. That's why 
+              we're committed to building affordable, scalable solutions that grow with your business.
+            </p>
+          </div>
+        </div>
+        
+        <div className="grid md:grid-cols-3 gap-8 text-center">
+          {stats.map((stat, index) => (
+            <div key={index}>
+              <div className="text-3xl font-bold gradient-text mb-2">
+                {stat.value}
+              </div>
+              <p className="text-gray-600 dark:text-gray-300">
+                {stat.label}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+```
+
+---
+
+## src/components/Contact.js
+```javascript
+'use client';
+
+import { useState } from 'react';
+import { Mail, Phone, MapPin, Twitter, Linkedin, Github } from 'lucide-react';
+
+export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    product: '',
+    message: ''
+  });
+
+  const contactInfo = [
+    { icon: Mail, label: "contact@icreativesolutions.pk" },
+    { icon: Phone, label: "+92 300 1234567" },
+    { icon: MapPin, label: "Islamabad, Pakistan" }
+  ];
+
+  const socialLinks = [
+    { icon: Twitter, href: "#", label: "Twitter" },
+    { icon: Linkedin, href: "#", label: "LinkedIn" },
+    { icon: Github, href: "#", label: "GitHub" }
+  ];
+
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission here
+    console.log('Form submitted:', formData);
+    alert('Thank you for your inquiry! We will contact you soon.');
+  };
+
+  return (
+    <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+            Get In Touch
+          </h2>
+          <p className="text-xl text-gray-600 dark:text-gray-300">
+            Ready to transform your business? Let's discuss how our solutions can help you grow.
+          </p>
+        </div>
+        
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* Contact Information */}
+          <div className="p-8 rounded-2xl bg-white/80 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 backdrop-blur-sm">
+            <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white">
+              Contact Information
+            </h3>
+            
+            <div className="space-y-4">
+              {contactInfo.map((contact, index) => (
+                <div key={index} className="flex items-center space-x-3">
+                  <contact.icon className="w-5 h-5 text-blue-600" />
+                  <span className="text-gray-600 dark:text-gray-300">
+                    {contact.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+            
+            <div className="mt-8">
+              <h4 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">
+                Follow Us
+              </h4>
+              <div className="flex space-x-4">
+                {socialLinks.map((social, index) => (
+                  <button
+                    key={index}
+                    onClick={() => window.open(social.href, '_blank')}
+                    className="p-2 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 transition-all duration-300"
+                    aria-label={social.label}
+                  >
+                    <social.icon className="w-5 h-5" />
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+          
+          {/* Contact Form */}
+          <div className="p-8 rounded-2xl bg-white/80 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 backdrop-blur-sm">
+            <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white">
+              Request a Demo
+            </h3>
+            
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                value={formData.name}
+                onChange={handleInputChange}
+                className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-colors"
+                required
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                value={formData.email}
+                onChange={handleInputChange}
+                className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-colors"
+                required
+              />
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Your Phone"
+                value={formData.phone}
+                onChange={handleInputChange}
+                className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-colors"
+              />
+              <select 
+                name="product"
+                value={formData.product}
+                onChange={handleInputChange}
+                className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-colors"
+              >
+                <option value="">Select Product Interest</option>
+                <option value="PharmAssist">PharmAssist</option>
+                <option value="GrowAssist">GrowAssist</option>
+                <option value="Custom Solution">Custom Solution</option>
+              </select>
+              <textarea
+                name="message"
+                placeholder="Tell us about your business needs..."
+                rows="4"
+                value={formData.message}
+                onChange={handleInputChange}
+                className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 resize-none transition-colors"
+              />
+              <button type="submit" className="w-full btn-primary">
+                Send Request
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+``` focus:ring-2 focus:ring-blue-500/20 transition-colors"
+              />
+              <input
+                type="tel"
+                placeholder="Your Phone"
+                className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-colors"
+              />
+              <select className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-colors">
+                <option>Select Product Interest</option>
+                <option>PharmAssist</option>
+                <option>GrowAssist</option>
+                <option>Custom Solution</option>
+              </select>
+              <textarea
+                placeholder="Tell us about your business needs..."
+                rows="4"
+                className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 resize-none transition-colors"
+              />
+              <button className="w-full btn-primary">
+                Send Request
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+```
+
+---
+
+## src/components/Footer.js
+```javascript
+export default function Footer() {
+  const footerLinks = {
+    products: [
+      { name: "PharmAssist", href: "#" },
+      { name: "GrowAssist", href: "#" },
+      { name: "Coming Soon", href: "#" }
+    ],
+    company: [
+      { name: "About Us", href: "#about" },
+      { name: "Contact", href: "#contact" },
+      { name: "Support", href: "#" },
+      { name: "Privacy Policy", href: "#" }
+    ]
+  };
+
+  return (
+    <footer className="border-t border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid md:grid-cols-4 gap-8">
+          {/* Brand */}
+          <div className="col-span-2">
+            <div className="flex items-center space-x-3 mb-4">
+              <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-lg">iC</span>
+              </div>
+              <span className="text-xl font-bold gradient-text">
+                iCreative Solutions
+              </span>
+            </div>
+            <p className="mb-6 max-w-md text-gray-600 dark:text-gray-400">
+              Empowering Pakistani businesses with intelligent POS solutions that drive growth and efficiency.
+            </p>
+            <div className="text-sm text-gray-500 dark:text-gray-500">
+              © 2024 iCreative Solutions. All rights reserved.
+            </div>
+          </div>
+          
+          {/* Products */}
+          <div>
+            <h4 className="font-semibold mb-4 text-gray-900 dark:text-white">
+              Products
+            </h4>
+            <div className="space-y-2">
+              {footerLinks.products.map((link, index) => (
+                <a
+                  key={index}
+                  href={link.href}
+                  className="block text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                >
+                  {link.name}
+                </a>
+              ))}
+            </div>
+          </div>
+          
+          {/* Company */}
+          <div>
+            <h4 className="font-semibold mb-4 text-gray-900 dark:text-white">
+              Company
+            </h4>
+            <div className="space-y-2">
+              {footerLinks.company.map((link, index) => (
+                <a
+                  key={index}
+                  href={link.href}
+                  className="block text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                >
+                  {link.name}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+        
+        <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-800 text-center">
+          <p className="text-sm text-gray-500 dark:text-gray-500">
+            Powered by iCreative Solutions - Building the future of Pakistani business technology
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+}
+```
+
+---
+
+## src/app/page.js
+```javascript
+import NavigationBar from '../components/NavigationBar';
+import Hero from '../components/Hero';
+import Features from '../components/Features';
+import Products from '../components/Products';
+import About from '../components/About';
+import Contact from '../components/Contact';
+import Footer from '../components/Footer';
+
+export default function HomePage() {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 text-gray-900 dark:text-white transition-colors duration-300">
+      <NavigationBar />
+      <Hero />
+      <Features />
+      <Products />
+      <About />
+      <Contact />
+      <Footer />
+    </div>
+  );
+}
+```
+
+---
+
+## src/app/products/page.js
+```javascript
+import NavigationBar from '../../components/NavigationBar';
+import Products from '../../components/Products';
+import Footer from '../../components/Footer';
+
+export const metadata = {
+  title: 'Products - iCreative Solutions',
+  description: 'Explore our range of POS solutions including PharmAssist and GrowAssist for Pakistani businesses.',
+};
+
+export default function ProductsPage() {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 text-gray-900 dark:text-white transition-colors duration-300">
+      <NavigationBar />
+      <div className="pt-24">
+        <Products />
+      </div>
+      <Footer />
+    </div>
+  );
+}
+```
+
+---
+
+## src/app/about/page.js
+```javascript
+import NavigationBar from '../../components/NavigationBar';
+import About from '../../components/About';
+import Footer from '../../components/Footer';
+
+export const metadata = {
+  title: 'About - iCreative Solutions',
+  description: 'Learn about iCreative Solutions mission to transform Pakistani businesses with intelligent POS systems.',
+};
+
+export default function AboutPage() {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 text-gray-900 dark:text-white transition-colors duration-300">
+      <NavigationBar />
+      <div className="pt-24">
+        <About />
+      </div>
+      <Footer />
+    </div>
+  );
+}
+```
+
+---
+
+## src/app/contact/page.js
+```javascript
+import NavigationBar from '../../components/NavigationBar';
+import Contact from '../../components/Contact';
+import Footer from '../../components/Footer';
+
+export const metadata = {
+  title: 'Contact - iCreative Solutions',
+  description: 'Get in touch with iCreative Solutions for POS system demos and business inquiries.',
+};
+
+export default function ContactPage() {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 text-gray-900 dark:text-white transition-colors duration-300">
+      <NavigationBar />
+      <div className="pt-24">
+        <Contact />
+      </div>
+      <Footer />
+    </div>
+  );
+}
+```
+
+---
+
+## Deployment Instructions
+
+### Local Development
+1. Clone/create the project directory
+2. Run `npm install` to install dependencies
+3. Run `npm run dev` to start development server
+4. Open `http://localhost:3000`
+
+### Vercel Deployment
+1. Push code to GitHub repository
+2. Connect repository to Vercel
+3. Vercel will auto-deploy with these settings:
+   - Build Command: `npm run build`
+   - Output Directory: `.next`
+   - Install Command: `npm install`
+
+### Environment Setup
+No additional environment variables needed for basic functionality.
