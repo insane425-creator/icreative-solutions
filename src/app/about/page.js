@@ -160,7 +160,7 @@ export default function About() {
   const ProfileImage = ({ src, alt, name, className = "w-full h-full" }) => {
     if (imageErrors.has(src)) {
       return (
-        <div className={`${className} rounded-xl bg-gradient-to-br from-orange-200 to-red-200 dark:from-orange-800/50 dark:to-red-800/50 flex items-center justify-center font-bold text-orange-600 dark:text-orange-300`}>
+        <div className={`${className} rounded-xl bg-gradient-to-br from-orange-50 to-red-50 dark:from-neutral-900 dark:to-neutral-950 flex items-center justify-center font-bold text-orange-600 dark:text-orange-300`}>
           {name.charAt(0)}
         </div>
       );
@@ -194,7 +194,7 @@ export default function About() {
               <Sparkles className="w-4 h-4 mr-2" />
               Meet the Visionary
             </div>
-            <h1 className="text-4xl lg:text-6xl font-bold bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 bg-clip-text text-transparent mb-4">
+            <h1 className="text-4xl lg:text-6xl font-bold bg-gradient-to-r from-orange-600 via-amber-600 to-orange-600 bg-clip-text text-transparent mb-4">
               Our Founder
             </h1>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -209,8 +209,8 @@ export default function About() {
               <div className="relative p-10 lg:p-12">
                 <div className="flex flex-col lg:flex-row items-center gap-10">
                   <div className="relative group">
-                    <div className="absolute -inset-4 bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 rounded-2xl blur-lg opacity-30 group-hover:opacity-50 transition-opacity duration-500 animate-pulse"></div>
-                    <div className="relative w-64 h-80 lg:w-72 lg:h-96 rounded-2xl bg-gradient-to-br from-orange-400 via-red-500 to-pink-500 p-1 shadow-2xl group-hover:scale-105 transition-transform duration-500">
+                    <div className="absolute -inset-4 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-500 rounded-2xl blur-lg opacity-30 group-hover:opacity-50 transition-opacity duration-500 animate-pulse"></div>
+                    <div className="relative w-64 h-80 lg:w-72 lg:h-96 rounded-2xl bg-gradient-to-br from-orange-400 via-red-500 to-orange-500 p-1 shadow-2xl group-hover:scale-105 transition-transform duration-500">
                       <ProfileImage
                         src={aboutData.founder.imagePath}
                         alt={aboutData.founder.name}
@@ -223,7 +223,7 @@ export default function About() {
                       <Award className="w-8 h-8" />
                     </div>
                     
-                    <div className="absolute -top-4 -left-4 bg-gradient-to-r from-red-500 to-pink-600 text-white p-3 rounded-2xl shadow-xl">
+                    <div className="absolute -top-4 -left-4 bg-gradient-to-r from-orange-500 to-red-600 text-white p-3 rounded-2xl shadow-xl">
                       <Trophy className="w-6 h-6" />
                     </div>
                   </div>
@@ -289,7 +289,7 @@ export default function About() {
       </section>
 
       {/* Core Team - Much Bigger Cards */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-orange-900 via-amber-900 to-yellow-900 relative overflow-hidden">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-orange-600 via-amber-900 to-yellow-900 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(249,115,22,0.15),transparent)] pointer-events-none"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(245,158,11,0.15),transparent)] pointer-events-none"></div>
         
@@ -475,7 +475,7 @@ export default function About() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 relative overflow-hidden">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-orange-400 dark:bg-orange-900 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1),transparent)]"></div>
         <div className="absolute top-10 left-10 w-32 h-32 bg-white/10 rounded-full blur-xl"></div>
         <div className="absolute bottom-10 right-10 w-24 h-24 bg-white/10 rounded-full blur-xl"></div>
