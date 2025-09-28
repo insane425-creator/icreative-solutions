@@ -44,7 +44,7 @@ export default function Hero() {
           </p>
           
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
             <button 
               onClick={handleExploreProducts}
               className="group relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-sky-500 text-white rounded-full font-semibold shadow-lg hover:shadow-xl hover:shadow-cyan-500/25 transition-all duration-300 hover:scale-105 flex items-center space-x-2"
@@ -60,6 +60,17 @@ export default function Hero() {
               <Play className="w-4 h-4" />
               <span>Request Demo</span>
             </button>
+          </div>
+          
+          {/* Secondary CTA - Team */}
+          <div className="flex justify-center mb-16">
+            <a 
+              href="/about"
+              className="group inline-flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors duration-300 font-medium text-lg underline-offset-4 hover:underline"
+            >
+              <span>Meet Our Team</span>
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </a>
           </div>
           
           {/* Trust indicators */}
