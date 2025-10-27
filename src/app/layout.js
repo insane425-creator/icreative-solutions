@@ -1,6 +1,7 @@
 // src/app/layout.js
 import { Inter } from 'next/font/google'
 import './globals.css'
+import WhatsAppFloatingWidget from '../components/WhatsAppFloatingWidget'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -28,6 +29,7 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         {children}
+        <WhatsAppFloatingWidget />
       </body>
     </html>
   )
