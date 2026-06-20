@@ -9,7 +9,6 @@ import FounderSection from './FounderSection';
 const CoreTeamSection = lazy(() => import('./CoreTeamSection'));
 const MissionVisionSection = lazy(() => import('./MissionVisionSection'));
 const StatsSection = lazy(() => import('./StatsSection'));
-const CommunitySection = lazy(() => import('./CommunitySection'));
 const CTASection = lazy(() => import('./CTASection'));
 
 // Loading skeleton component
@@ -36,7 +35,7 @@ export default function About() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 transition-colors duration-300">
       <NavigationBar />
       
       {/* Hero Spacer */}
@@ -66,14 +65,6 @@ export default function About() {
       {/* Stats - Lazy load */}
       <Suspense fallback={<SectionSkeleton height="h-48" />}>
         <StatsSection />
-      </Suspense>
-
-      {/* Community - Lazy load */}
-      <Suspense fallback={<SectionSkeleton height="h-[600px]" />}>
-        <CommunitySection 
-          imageErrors={imageErrors}
-          onImageError={handleImageError}
-        />
       </Suspense>
 
       {/* Call to Action - Lazy load */}

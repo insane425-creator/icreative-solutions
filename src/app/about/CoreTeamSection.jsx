@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { Users, Star } from 'lucide-react';
 import ProfileImage from './ProfileImage';
 
@@ -13,110 +12,130 @@ const coreTeamData = [
     name: "Saad Ali",
     title: "Customer Success Manager",
     tagline: "Customer happiness engineer and problem-solving ninja ⚡",
-    imagePath: "/community/core/saad.jpg"
-  },
-  {
-    name: "Sarah Khan",
-    title: "Head of Design",
-    tagline: "Makes interfaces so beautiful, even bugs look elegant ✨",
-    imagePath: "/community/core/girl.png"
+    imagePath: "/community/core/Saad.jpeg"
   }
 ];
 
-function RotatingTeamMember({ members, imageErrors, onImageError }) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [fadeClass, setFadeClass] = useState('opacity-100');
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setFadeClass('opacity-0');
-      setTimeout(() => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % members.length);
-        setFadeClass('opacity-100');
-      }, 300);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [members.length]);
-
-  const currentMember = members[currentIndex];
-
-  return (
-    <div className="flex flex-col items-center justify-center">
-      <div className={`transition-opacity duration-300 ${fadeClass}`}>
-        <div className="relative group">
-          <div className="w-72 h-80 lg:w-80 lg:h-96 rounded-2xl bg-gradient-to-br from-gray-900 to-gray-700 dark:from-gray-700 dark:to-gray-900 p-0.5 shadow-xl">
-            <ProfileImage
-              src={currentMember.imagePath}
-              alt={currentMember.name}
-              name={currentMember.name}
-              className="w-full h-full text-5xl rounded-2xl"
-              imageErrors={imageErrors}
-              onError={onImageError}
-            />
-          </div>
-          <div className="absolute -bottom-3 -right-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 p-3 rounded-xl shadow-lg">
-            <Star className="w-5 h-5" />
-          </div>
-        </div>
-        <div className="text-center mt-6 space-y-2">
-          <h4 className="text-xl font-bold text-cyan-400 dark:text-white">
-            {currentMember.name}
-          </h4>
-          <p className="text-sm text-gray-600 dark:text-gray-400 font-medium">
-            {currentMember.title}
-          </p>
-          <p className="text-sm text-gray-500 dark:text-gray-500 italic">
-            {currentMember.tagline}
-          </p>
-        </div>
-      </div>
-
-      {/* Progress Indicators */}
-      <div className="flex justify-center mt-6 space-x-2">
-        {members.map((_, index) => (
-          <div
-            key={index}
-            className={`h-1.5 rounded-full transition-all duration-300 ${
-              currentIndex === index
-                ? 'bg-gray-900 dark:bg-white w-8'
-                : 'bg-gray-300 dark:bg-gray-600 w-1.5'
-            }`}
-          />
-        ))}
-      </div>
-    </div>
-  );
-}
+const extendedMember = {
+  name: "Huzaifa Shams",
+  title: "Tech Enthusiast",
+  tagline: "Dedicated to pushing boundaries and exploring new technologies 💻",
+  imagePath: "/community/group-tech/huzaifa.jpg"
+};
 
 export default function CoreTeamSection({ imageErrors, onImageError }) {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900 dark:bg-gray-950">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col lg:flex-row items-center gap-16">
-          {/* Image Side */}
-          <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
-            <RotatingTeamMember 
-              members={coreTeamData} 
-              imageErrors={imageErrors}
-              onImageError={onImageError}
-            />
+    <section className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      {/* Professional background glowing orbs */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -left-40 w-[600px] h-[600px] bg-cyan-500/10 dark:bg-cyan-600/20 rounded-full blur-[120px] animate-pulse"></div>
+        <div className="absolute -bottom-40 -right-40 w-[600px] h-[600px] bg-purple-500/10 dark:bg-purple-600/20 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1.5s' }}></div>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto">
+        {/* Header Section */}
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/50 dark:bg-white/10 text-gray-900 dark:text-white font-medium mb-6 backdrop-blur-sm border border-gray-200 dark:border-white/10 shadow-sm">
+            <Users className="w-4 h-4 mr-2 text-blue-500" />
+            Core Team
+          </div>
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+            Meet Our Leadership
+          </h2>
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
+            The incredible people who make the magic happen. Our leadership team brings decades of combined experience in technology, design, and customer success.
+          </p>
+        </div>
+
+        {/* Team Grid */}
+        <div className="grid md:grid-cols-2 gap-16 lg:gap-24 max-w-5xl mx-auto mb-32">
+          {coreTeamData.map((member, index) => (
+            <div key={index} className="flex flex-col items-center">
+              {/* Image Frame with Professional Glow Animation */}
+              <div className="relative group w-full max-w-[320px]">
+                {/* Glowing Background that expands on hover */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-cyan-400 via-purple-500 to-blue-500 rounded-3xl opacity-30 dark:opacity-40 blur-md group-hover:opacity-60 dark:group-hover:opacity-100 group-hover:blur-xl transition-all duration-700"></div>
+                
+                <div className="relative h-[400px] rounded-3xl bg-white dark:bg-gray-900 p-1 shadow-xl">
+                  <div className="w-full h-full rounded-[22px] overflow-hidden bg-gray-100 dark:bg-gray-800">
+                    <ProfileImage
+                      src={member.imagePath}
+                      alt={member.name}
+                      name={member.name}
+                      className="w-full h-full text-5xl object-cover transition-transform duration-700 group-hover:scale-110"
+                      imageErrors={imageErrors}
+                      onError={onImageError}
+                    />
+                  </div>
+                  {/* Floating Star Badge */}
+                  <div className="absolute -bottom-5 -right-5 bg-white dark:bg-gray-900 text-gray-900 dark:text-white p-4 rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-700 group-hover:-translate-y-2 transition-transform duration-500">
+                    <Star className="w-6 h-6 text-cyan-500 dark:text-cyan-400 fill-current" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Text Content */}
+              <div className="text-center mt-12 space-y-4">
+                <h4 className="text-3xl font-bold text-gray-900 dark:text-white tracking-wide">
+                  {member.name}
+                </h4>
+                <div className="inline-block px-5 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 dark:text-cyan-400 font-semibold text-sm">
+                  {member.title}
+                </div>
+                <p className="text-gray-600 dark:text-gray-400 italic text-lg max-w-sm mx-auto">
+                  "{member.tagline}"
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Extended Member Section (The Heart of Our Success) */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+            The Heart of Our Success
+          </h2>
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
+            Meet the dedicated enthusiast shaping our vibrant tech ecosystem
+          </p>
+        </div>
+
+        <div className="flex flex-col items-center justify-center max-w-lg mx-auto">
+          {/* Image Frame with Professional Glow Animation */}
+          <div className="relative group w-full max-w-[320px]">
+            <div className="absolute -inset-1 bg-gradient-to-r from-cyan-400 via-purple-500 to-blue-500 rounded-3xl opacity-30 dark:opacity-40 blur-md group-hover:opacity-60 dark:group-hover:opacity-100 group-hover:blur-xl transition-all duration-700"></div>
+            
+            <div className="relative h-[400px] rounded-3xl bg-white dark:bg-gray-900 p-1 shadow-xl">
+              <div className="w-full h-full rounded-[22px] overflow-hidden bg-gray-100 dark:bg-gray-800">
+                <ProfileImage
+                  src={extendedMember.imagePath}
+                  alt={extendedMember.name}
+                  name={extendedMember.name}
+                  className="w-full h-full text-5xl object-cover transition-transform duration-700 group-hover:scale-110"
+                  imageErrors={imageErrors}
+                  onError={onImageError}
+                />
+              </div>
+              <div className="absolute -bottom-5 -right-5 bg-white dark:bg-gray-900 text-gray-900 dark:text-white p-4 rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-700 group-hover:-translate-y-2 transition-transform duration-500">
+                <Star className="w-6 h-6 text-pink-500 fill-current" />
+              </div>
+            </div>
           </div>
 
-          {/* Content Side */}
-          <div className="w-full lg:w-1/2 text-center lg:text-left">
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 text-white font-medium mb-6">
-              <Users className="w-4 h-4 mr-2" />
-              Core Team
+          {/* Text Content */}
+          <div className="text-center mt-12 space-y-4">
+            <h4 className="text-3xl font-bold text-gray-900 dark:text-white tracking-wide">
+              {extendedMember.name}
+            </h4>
+            <div className="inline-block px-5 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 dark:text-cyan-400 font-semibold text-sm">
+              {extendedMember.title}
             </div>
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-              Meet Our Leadership
-            </h2>
-            <p className="text-xl text-gray-300 leading-relaxed">
-              The incredible people who make the magic happen. Our leadership team brings decades of combined experience in technology, design, and customer success.
+            <p className="text-gray-600 dark:text-gray-400 italic text-lg max-w-sm mx-auto">
+              "{extendedMember.tagline}"
             </p>
           </div>
         </div>
+
       </div>
     </section>
   );

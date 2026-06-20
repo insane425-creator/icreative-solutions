@@ -1,6 +1,6 @@
 'use client';
 
-import { ArrowRight, Play } from 'lucide-react';
+import { ArrowRight, Play, Users } from 'lucide-react';
 
 export default function Hero() {
   const handleExploreProducts = () => {
@@ -44,10 +44,10 @@ export default function Hero() {
           </p>
           
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+          <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4 sm:gap-5 mb-16">
             <button 
               onClick={handleExploreProducts}
-              className="group relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-sky-500 text-white rounded-full font-semibold shadow-lg hover:shadow-xl hover:shadow-cyan-500/25 transition-all duration-300 hover:scale-105 flex items-center space-x-2"
+              className="group w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-cyan-500 to-sky-500 text-white rounded-full font-semibold shadow-lg hover:shadow-xl hover:shadow-cyan-500/25 transition-all duration-300 hover:-translate-y-1 flex items-center justify-center space-x-2"
             >
               <span>Explore Our Products</span>
               <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
@@ -55,21 +55,18 @@ export default function Hero() {
             
             <button 
               onClick={handleRequestDemo}
-              className="group px-8 py-4 border-2 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-full font-semibold hover:border-cyan-500 hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-cyan-50/50 dark:hover:bg-cyan-900/20 transition-all duration-300 hover:scale-105 flex items-center space-x-2"
+              className="group w-full sm:w-auto px-8 py-4 bg-cyan-50 dark:bg-cyan-900/20 text-cyan-700 dark:text-cyan-300 rounded-full font-semibold border border-cyan-200 dark:border-cyan-800/50 shadow-sm hover:shadow-md hover:bg-cyan-100 dark:hover:bg-cyan-900/40 transition-all duration-300 hover:-translate-y-1 flex items-center justify-center space-x-2"
             >
-              <Play className="w-4 h-4" />
+              <Play className="w-4 h-4 fill-current text-cyan-500 transition-transform group-hover:scale-110" />
               <span>Request Demo</span>
             </button>
-          </div>
-          
-          {/* Secondary CTA - Team */}
-          <div className="flex justify-center mb-16">
+
             <a 
               href="/about"
-              className="group inline-flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors duration-300 font-medium text-lg underline-offset-4 hover:underline"
+              className="group w-full sm:w-auto px-8 py-4 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-full font-semibold shadow-sm hover:border-cyan-500 hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-cyan-50/50 dark:hover:bg-cyan-900/20 transition-all duration-300 hover:-translate-y-1 flex items-center justify-center space-x-2"
             >
+              <Users className="w-5 h-5 transition-transform group-hover:scale-110" />
               <span>Meet Our Team</span>
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </a>
           </div>
           
