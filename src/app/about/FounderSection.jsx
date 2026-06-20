@@ -5,7 +5,7 @@ const founderData = {
   name: "Imad Khan Lodhi",
   title: "Founder & CEO, iCreative Solutions",
   bio: "Passionate about transforming Pakistani businesses through innovative POS solutions. Building the future of retail technology, one business at a time.",
-  imagePath: "/community/founder.jpg",
+  imagePath: "/community/Founder.jpg",
   achievements: [
     "100+ Businesses Digitally Transformed",
     "Leading Pakistan's POS Revolution",
@@ -44,7 +44,7 @@ export default function FounderSection({ imageErrors, onImageError }) {
             <div className="relative group w-full max-w-[360px]">
               {/* Glowing Background */}
               <div className="absolute -inset-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 rounded-3xl opacity-30 dark:opacity-40 blur-md group-hover:opacity-60 dark:group-hover:opacity-100 group-hover:blur-xl transition-all duration-700"></div>
-              
+
               <div className="relative h-[450px] rounded-3xl bg-white dark:bg-gray-900 p-1 shadow-2xl">
                 <div className="w-full h-full rounded-[22px] overflow-hidden bg-gray-100 dark:bg-gray-800">
                   <ProfileImage

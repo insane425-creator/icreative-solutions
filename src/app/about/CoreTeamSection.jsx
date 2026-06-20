@@ -12,7 +12,7 @@ const coreTeamData = [
     name: "Saad Ali",
     title: "Customer Success Manager",
     tagline: "Customer happiness engineer and problem-solving ninja ⚡",
-    imagePath: "/community/core/Saad.jpeg"
+    imagePath: "/community/core/saad.jpeg"
   }
 ];
 
@@ -55,7 +55,7 @@ export default function CoreTeamSection({ imageErrors, onImageError }) {
               <div className="relative group w-full max-w-[320px]">
                 {/* Glowing Background that expands on hover */}
                 <div className="absolute -inset-1 bg-gradient-to-r from-cyan-400 via-purple-500 to-blue-500 rounded-3xl opacity-30 dark:opacity-40 blur-md group-hover:opacity-60 dark:group-hover:opacity-100 group-hover:blur-xl transition-all duration-700"></div>
-                
+
                 <div className="relative h-[400px] rounded-3xl bg-white dark:bg-gray-900 p-1 shadow-xl">
                   <div className="w-full h-full rounded-[22px] overflow-hidden bg-gray-100 dark:bg-gray-800">
                     <ProfileImage
@@ -104,7 +104,7 @@ export default function CoreTeamSection({ imageErrors, onImageError }) {
           {/* Image Frame with Professional Glow Animation */}
           <div className="relative group w-full max-w-[320px]">
             <div className="absolute -inset-1 bg-gradient-to-r from-cyan-400 via-purple-500 to-blue-500 rounded-3xl opacity-30 dark:opacity-40 blur-md group-hover:opacity-60 dark:group-hover:opacity-100 group-hover:blur-xl transition-all duration-700"></div>
-            
+
             <div className="relative h-[400px] rounded-3xl bg-white dark:bg-gray-900 p-1 shadow-xl">
               <div className="w-full h-full rounded-[22px] overflow-hidden bg-gray-100 dark:bg-gray-800">
                 <ProfileImage
