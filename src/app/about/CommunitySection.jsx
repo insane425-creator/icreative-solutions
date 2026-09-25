@@ -65,6 +65,35 @@ export default function CommunitySection({ imageErrors, onImageError }) {
             </p>
           </div>
         </div>
+
+        {/* Community & Innovation Contributors (Names Only) */}
+        <div className="mt-20 pt-12 border-t border-gray-200/60 dark:border-gray-800/80 max-w-4xl mx-auto text-center">
+          <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3">
+            Innovation & Community Champions
+          </h3>
+          <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base mb-8 max-w-xl mx-auto">
+            Valued contributors driving innovation and empowering our growing tech ecosystem
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+            {[
+              "Ahtisham",
+              "Husnain",
+              "Mairaj",
+              "Moiz",
+              "Naqash"
+            ].map((name, index) => (
+              <div
+                key={index}
+                className="group relative px-5 py-2.5 rounded-full bg-white dark:bg-gray-900 border border-gray-200/80 dark:border-gray-800 shadow-sm hover:shadow-md hover:border-cyan-500/50 dark:hover:border-cyan-400/50 transition-all duration-300 flex items-center space-x-2"
+              >
+                <span className="w-2 h-2 rounded-full bg-gradient-to-r from-cyan-400 to-purple-500 group-hover:scale-125 transition-transform duration-300"></span>
+                <span className="text-sm sm:text-base font-medium text-gray-800 dark:text-gray-200 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                  {name}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

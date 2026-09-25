@@ -2,8 +2,18 @@ import NavigationBar from '../../components/NavigationBar';
 import Footer from '../../components/Footer';
 
 export const metadata = {
-  title: 'GrowAssist - Coming Soon',
-  description: 'Advanced grocery store POS system coming soon.',
+  title: 'GrowAssist – Grocery Store POS Software',
+  description:
+    'GrowAssist is a smart grocery store POS system coming soon from iCreative Solutions. Join the waitlist for early access.',
+  alternates: {
+    canonical: 'https://icreative.vercel.app/growassist',
+  },
+  openGraph: {
+    title: 'GrowAssist – Grocery Store POS | iCreative Solutions',
+    description: 'Advanced grocery store POS software for Pakistani businesses. Coming soon — request early access today.',
+    url: 'https://icreative.vercel.app/growassist',
+    type: 'website',
+  },
 };
 
 export default function GrowAssistPage() {

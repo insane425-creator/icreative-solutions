@@ -4,8 +4,18 @@ import Products from '../../components/Products';
 import Footer from '../../components/Footer';
 
 export const metadata = {
-  title: 'Products - iCreative Solutions',
-  description: 'Explore our range of POS solutions including PharmAssist and GrowAssist for Pakistani businesses.',
+  title: 'Our Products',
+  description:
+    'Explore PharmAssist (pharmacy POS) and GrowAssist (grocery store POS) — intelligent retail management software built for Pakistani businesses.',
+  alternates: {
+    canonical: 'https://icreative.vercel.app/products',
+  },
+  openGraph: {
+    title: 'Our Products | iCreative Solutions',
+    description: 'PharmAssist & GrowAssist — smart, offline-capable POS software for pharmacies and grocery stores in Pakistan.',
+    url: 'https://icreative.vercel.app/products',
+    type: 'website',
+  },
 };
 
 export default function ProductsPage() {

@@ -37,13 +37,22 @@ export default function About() {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950 transition-colors duration-300">
       <NavigationBar />
-      
+
       {/* Hero Spacer */}
       <div className="pt-20"></div>
 
       {/* Founder Section - Load immediately (above fold) */}
       <Suspense fallback={<SectionSkeleton />}>
-        <FounderSection 
+        <FounderSection
+          imageErrors={imageErrors}
+          onImageError={handleImageError}
+        />
+      </Suspense>
+
+
+      {/* Core Team - Lazy load */}
+      <Suspense fallback={<SectionSkeleton />}>
+        <CoreTeamSection
           imageErrors={imageErrors}
           onImageError={handleImageError}
         />
@@ -53,15 +62,6 @@ export default function About() {
       <Suspense fallback={<SectionSkeleton height="h-64" />}>
         <MissionVisionSection />
       </Suspense>
-
-      {/* Core Team - Lazy load */}
-      <Suspense fallback={<SectionSkeleton />}>
-        <CoreTeamSection 
-          imageErrors={imageErrors}
-          onImageError={handleImageError}
-        />
-      </Suspense>
-
       {/* Stats - Lazy load */}
       <Suspense fallback={<SectionSkeleton height="h-48" />}>
         <StatsSection />

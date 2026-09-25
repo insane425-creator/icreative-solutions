@@ -4,8 +4,18 @@ import Contact from '../../components/Contact';
 import Footer from '../../components/Footer';
 
 export const metadata = {
-  title: 'Contact - iCreative Solutions',
-  description: 'Get in touch with iCreative Solutions for POS system demos and business inquiries.',
+  title: 'Contact Us',
+  description:
+    'Get in touch with iCreative Solutions. Book a free demo, ask about PharmAssist or GrowAssist, or call us at +92 327 5848916.',
+  alternates: {
+    canonical: 'https://icreative.vercel.app/contact',
+  },
+  openGraph: {
+    title: 'Contact Us | iCreative Solutions',
+    description: 'Reach out for a free POS software demo or business inquiry. We reply instantly via WhatsApp.',
+    url: 'https://icreative.vercel.app/contact',
+    type: 'website',
+  },
 };
 
 export default function ContactPage() {

@@ -5,22 +5,58 @@ import WhatsAppFloatingWidget from '../components/WhatsAppFloatingWidget'
 
 const inter = Inter({ subsets: ['latin'] })
 
+const SITE_URL = 'https://icreative.vercel.app';
+
 export const metadata = {
-  title: 'iCreative Solutions - Smarter POS Solutions for Pakistani Businesses',
-  description: 'Empowering pharmacies and grocery stores with intelligent, user-friendly point-of-sale systems designed specifically for local business needs.',
-  keywords: 'POS, Pakistan, Pharmacy, Grocery, Point of Sale, Business Software',
-  authors: [{ name: 'iCreative Solutions' }],
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: 'iCreative Solutions – Smart POS Software for Pakistani Businesses',
+    template: '%s | iCreative Solutions',
+  },
+  description:
+    'iCreative Solutions empowers pharmacies and grocery stores across Pakistan with intelligent, offline-capable point-of-sale software — PharmAssist & GrowAssist.',
+  keywords: [
+    'POS software Pakistan',
+    'pharmacy POS Pakistan',
+    'grocery store POS',
+    'point of sale Abbottabad',
+    'PharmAssist',
+    'GrowAssist',
+    'retail management software Pakistan',
+    'iCreative Solutions',
+  ],
+  authors: [{ name: 'iCreative Solutions', url: SITE_URL }],
+  creator: 'iCreative Solutions',
+  publisher: 'iCreative Solutions',
+  alternates: {
+    canonical: SITE_URL,
+  },
   openGraph: {
-    title: 'iCreative Solutions - Smarter POS Solutions',
-    description: 'Intelligent POS systems for Pakistani businesses',
-    url: 'https://icreative.vercel.app',
+    title: 'iCreative Solutions – Smart POS Software for Pakistani Businesses',
+    description:
+      'Intelligent, offline-capable POS systems designed specifically for pharmacies and grocery stores in Pakistan.',
+    url: SITE_URL,
     siteName: 'iCreative Solutions',
+    locale: 'en_PK',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'iCreative Solutions - Smarter POS Solutions',
-    description: 'Intelligent POS systems for Pakistani businesses',
+    title: 'iCreative Solutions – Smart POS Software',
+    description:
+      'Intelligent POS systems for pharmacies & grocery stores in Pakistan.',
+    creator: '@icreativepk',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-snippet': -1,
+      'max-image-preview': 'large',
+      'max-video-preview': -1,
+    },
   },
 }
 

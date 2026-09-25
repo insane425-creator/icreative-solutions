@@ -54,9 +54,9 @@ export default function Footer() {
                 <Mail className="w-5 h-5 text-cyan-500" />
                 <span>info@icreativesolutions.pk</span>
               </a>
-              <a href="tel:+923471867197" className="flex items-center space-x-3 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors w-max">
+              <a href="tel:+923275848916" className="flex items-center space-x-3 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors w-max">
                 <Phone className="w-5 h-5 text-cyan-500" />
-                <span dir="ltr">+92 347 1867197</span>
+                <span dir="ltr">+92 327 5848916</span>
               </a>
             </div>
           </div>
@@ -120,7 +120,7 @@ export default function Footer() {
               ))}
               <li className="pt-4">
                 <Link href="https://github.com/insane425-creator/pharm_Assist/releases" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center space-x-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-4 py-2 rounded-xl font-bold text-sm hover:scale-105 transition-transform shadow-lg">
-                  <span>Download App V1.4.0</span>
+                  <span>Download App V2.0.5</span>
                   <ArrowUpRight className="w-4 h-4" />
                 </Link>
               </li>

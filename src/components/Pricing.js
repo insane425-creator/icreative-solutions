@@ -113,7 +113,7 @@ export default function Pricing() {
           <p className="text-xl max-w-3xl mx-auto text-gray-600 dark:text-gray-300 leading-relaxed mb-8">
             No hidden fees, no setup costs. Start with our 7-day free trial and scale as your business grows.
           </p>
-          
+
           {/* Money Back Guarantee */}
           <div className="inline-flex items-center space-x-2 px-4 py-2 bg-green-50 dark:bg-green-900/20 rounded-full text-green-700 dark:text-green-400 text-sm font-medium">
             <Shield className="w-4 h-4" />
@@ -131,15 +131,14 @@ export default function Pricing() {
               'bg-gradient-to-b from-cyan-200/80 to-sky-200/60 border-cyan-400/70 dark:from-cyan-800/50 dark:to-sky-800/35 dark:border-cyan-500/60',
               'bg-gradient-to-b from-orange-100/90 to-red-100/70 border-orange-300/60 dark:from-orange-900/40 dark:to-red-900/25 dark:border-orange-600/50'
             ];
-            
+
             return (
               <div
                 key={index}
-                className={`relative overflow-hidden rounded-2xl border transition-all duration-300 hover:-translate-y-1 h-full flex flex-col ${
-                  plan.popular
+                className={`relative overflow-hidden rounded-2xl border transition-all duration-300 hover:-translate-y-1 h-full flex flex-col ${plan.popular
                     ? 'shadow-xl shadow-cyan-500/10 ' + cardColors[index]
                     : 'hover:shadow-lg ' + cardColors[index]
-                }`}
+                  }`}
               >
 
                 <div className="p-8 flex flex-col flex-grow">
@@ -158,7 +157,7 @@ export default function Pricing() {
                     <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
                       {plan.subtitle}
                     </p>
-                    
+
                     {/* Pricing */}
                     <div className="flex items-baseline space-x-2 mb-2">
                       {plan.originalPrice && (
@@ -173,21 +172,21 @@ export default function Pricing() {
                         /{plan.period}
                       </span>
                     </div>
-                    
+
                     {/* Monthly Equivalent */}
                     {plan.monthlyEquivalent && (
                       <p className="text-sm text-cyan-600 dark:text-cyan-400 font-medium">
                         ≈ PKR {plan.monthlyEquivalent}/month
                       </p>
                     )}
-                    
+
                     {/* Savings */}
                     {plan.savings && (
                       <p className="text-sm text-green-600 dark:text-green-400 font-medium">
                         {plan.savings}
                       </p>
                     )}
-                    
+
                     <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
                       {plan.description}
                     </p>
@@ -211,11 +210,10 @@ export default function Pricing() {
                   <div className="flex-shrink-0 mt-auto">
                     <button
                       onClick={() => handlePlanSelect(plan.name)}
-                      className={`w-full px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
-                        plan.buttonStyle === 'btn-primary'
+                      className={`w-full px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${plan.buttonStyle === 'btn-primary'
                           ? 'bg-gradient-to-r from-cyan-500 to-sky-500 text-white shadow-lg hover:shadow-xl hover:shadow-cyan-500/25 hover:scale-105'
                           : 'border-2 border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-cyan-500 hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-cyan-50/50 dark:hover:bg-cyan-900/20'
-                      }`}
+                        }`}
                     >
                       {plan.name === 'Starter' ? 'Start Free Trial' : 'Get Started'}
                     </button>
@@ -231,7 +229,7 @@ export default function Pricing() {
           <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
             Every Plan Includes
           </h3>
-          
+
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
@@ -273,7 +271,7 @@ export default function Pricing() {
           <p className="text-gray-600 dark:text-gray-300 mb-6">
             Our team is here to help you choose the right plan for your business needs.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
@@ -281,9 +279,9 @@ export default function Pricing() {
             >
               Get Free Consultation
             </button>
-            
+
             <a
-              href="tel:+923706352186"
+              href="tel:+923275848916"
               className="px-6 py-3 border-2 border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-xl font-semibold hover:border-cyan-500 hover:text-cyan-600 dark:hover:text-cyan-400 transition-all duration-300"
             >
               Call: +92 370 6352186

@@ -5,7 +5,7 @@ const founderData = {
   name: "Imad Khan Lodhi",
   title: "Founder & CEO, iCreative Solutions",
   bio: "Passionate about transforming Pakistani businesses through innovative POS solutions. Building the future of retail technology, one business at a time.",
-  imagePath: "/community/Founder.jpg",
+  imagePath: "/community/Founder.png",
   achievements: [
     "100+ Businesses Digitally Transformed",
     "Leading Pakistan's POS Revolution",
