@@ -1,8 +1,5 @@
-//src/app/page.js
 import NavigationBar from '../components/NavigationBar';
 import Hero from '../components/Hero';
-import Features from '../components/Features';
-import IndustriesSection from '../components/IndustriesSection';
 import Products from '../components/Products';
 import HomeFounderSection from '../components/HomeFounderSection';
 import Contact from '../components/Contact';
@@ -22,8 +19,6 @@ export default function HomePage() {
     <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors duration-300">
       <NavigationBar />
       <Hero />
-      <Features />
-      <IndustriesSection />
       <Products />
       <HomeFounderSection />
       <Contact />

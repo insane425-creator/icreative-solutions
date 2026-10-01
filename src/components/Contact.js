@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin, ExternalLink, Building2 } from 'lucide-react';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -28,8 +28,9 @@ export default function Contact() {
     {
       icon: MapPin,
       label: "Abbottabad, Pakistan",
-      description: "Visit our office",
-      href: "#"
+      description: "Visit our office — View on Map",
+      href: "https://maps.app.goo.gl/G9wrB5umkiWNNoy1A",
+      target: "_blank"
     }
   ];
 
@@ -97,6 +98,8 @@ export default function Contact() {
                   <div key={index} className="group">
                     <a
                       href={contact.href}
+                      target={contact.target || '_self'}
+                      rel={contact.target ? 'noopener noreferrer' : undefined}
                       className="flex items-start space-x-4 p-4 rounded-2xl bg-gray-50 dark:bg-gray-800 hover:bg-cyan-50 dark:hover:bg-cyan-900/20 border border-gray-200 dark:border-gray-700 hover:border-cyan-200 dark:hover:border-cyan-700 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
                     >
                       <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-cyan-500 to-sky-500 rounded-xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
@@ -206,6 +209,89 @@ export default function Contact() {
                   By clicking send, you'll be redirected to WhatsApp with your message pre-filled
                 </p>
               </form>
+            </div>
+          </div>
+        </div>
+
+        {/* Office & Map Showcase Section */}
+        <div className="mt-20 pt-16 border-t border-gray-200 dark:border-gray-800">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 text-xs sm:text-sm font-semibold mb-4">
+              <Building2 className="w-4 h-4" />
+              <span>Headquarters & Innovation Hub</span>
+            </div>
+            <h3 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">
+              Visit Our Office in Abbottabad
+            </h3>
+            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 mt-3 max-w-2xl mx-auto">
+              Our engineering space where we design, build, and support mission-critical software for retail businesses across Pakistan.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-12 gap-8 items-stretch">
+            {/* Left: Interactive Google Map (7 cols) */}
+            <div className="lg:col-span-7 flex flex-col">
+              <div className="relative w-full h-[400px] lg:h-full min-h-[380px] rounded-3xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-xl bg-gray-100 dark:bg-gray-800">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3297.236998920322!2d73.2397368!3d34.2680082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38de3b2f751c7a3d%3A0xc7706294dbc41a57!2siCreative%20Solutions!5e0!3m2!1sen!2s!4v1790836352200!5m2!1sen!2s"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  title="iCreative Solutions Office Location"
+                  className="w-full h-full"
+                />
+                
+                {/* Floating "Open in Maps" Quick Badge */}
+                <div className="absolute bottom-4 right-4 z-10">
+                  <a
+                    href="https://maps.app.goo.gl/G9wrB5umkiWNNoy1A"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-white/95 dark:bg-gray-900/95 backdrop-blur-md text-gray-900 dark:text-white shadow-xl hover:bg-cyan-500 hover:text-white dark:hover:bg-cyan-500 text-xs sm:text-sm font-semibold transition-all duration-300 border border-gray-200 dark:border-gray-700 group hover:scale-105"
+                  >
+                    <ExternalLink className="w-4 h-4 text-cyan-500 group-hover:text-white transition-colors" />
+                    <span>Open in Google Maps</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Workspace Photos (5 cols) */}
+            <div className="lg:col-span-5 flex flex-col justify-between gap-6">
+              {/* Photo 1 */}
+              <div className="group relative rounded-3xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-lg bg-gray-100 dark:bg-gray-800 h-[210px] sm:h-[230px]">
+                <img
+                  src="/assets/Image0049.png"
+                  alt="iCreative Solutions Office Workspace"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-950/85 via-transparent to-transparent flex items-end p-5">
+                  <div>
+                    <span className="text-xs font-semibold uppercase tracking-wider text-cyan-400">Engineering Workspace</span>
+                    <p className="text-white text-sm font-medium">Software Development & QA Workstations</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Photo 2 */}
+              <div className="group relative rounded-3xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-lg bg-gray-100 dark:bg-gray-800 h-[210px] sm:h-[230px]">
+                <img
+                  src="/assets/Image0050.jfif"
+                  alt="iCreative Solutions Collaboration Hub"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-950/85 via-transparent to-transparent flex items-end p-5">
+                  <div>
+                    <span className="text-xs font-semibold uppercase tracking-wider text-cyan-400">Collaboration Space</span>
+                    <p className="text-white text-sm font-medium">Sprint Planning & Product Strategy</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

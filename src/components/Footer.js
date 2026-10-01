@@ -1,4 +1,4 @@
-import { ArrowUpRight, Mail, Phone, Shield } from 'lucide-react';
+import { ArrowUpRight, Mail, Phone, Shield, MapPin } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Footer() {
@@ -21,9 +21,11 @@ export default function Footer() {
       "Mirpur", "Quetta"
     ],
     support: [
-      { name: "Help Center", href: "#" },
-      { name: "WhatsApp Support", href: "#" },
-      { name: "Video Tutorials", href: "#" }
+      { name: "Subscription Plans", href: "/subscription-plans" },
+      { name: "FAQ's", href: "/faqs" },
+      { name: "Privacy Policy", href: "/privacy-policy" },
+      { name: "Refund Policy", href: "/refund-policy" },
+      { name: "WhatsApp Support", href: "https://wa.me/923275848916" }
     ]
   };
 
@@ -57,6 +59,15 @@ export default function Footer() {
               <a href="tel:+923275848916" className="flex items-center space-x-3 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors w-max">
                 <Phone className="w-5 h-5 text-cyan-500" />
                 <span dir="ltr">+92 327 5848916</span>
+              </a>
+              <a
+                href="https://maps.app.goo.gl/G9wrB5umkiWNNoy1A"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-3 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors w-max"
+              >
+                <MapPin className="w-5 h-5 text-cyan-500" />
+                <span>Abbottabad, Pakistan</span>
               </a>
             </div>
           </div>
@@ -129,22 +140,42 @@ export default function Footer() {
 
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-gray-200 dark:border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400 font-medium text-center md:text-left">
-            <span>© 2025 iCreative Solutions.</span>
-            <span className="hidden sm:inline">Proudly engineered in Pakistan 🇵🇰</span>
+        {/* Bottom Bar: Copyrights & Legal Navigation */}
+        <div className="border-t border-gray-200 dark:border-gray-800 pt-8 mt-4 flex flex-col lg:flex-row items-center justify-between gap-6 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+          
+          {/* Copyright notice */}
+          <div className="text-center lg:text-left font-medium">
+            <span>Copyright © 2024 - 2026 </span>
+            <Link href="/" className="font-bold text-gray-900 dark:text-white hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">
+              iCreative Solutions
+            </Link>
+            <span>. All Rights Reserved.</span>
           </div>
 
-          {/* Mobile only "Made in Pakistan" */}
-          <div className="sm:hidden text-sm text-gray-600 dark:text-gray-400 font-medium flex items-center">
-            Proudly engineered in Pakistan 🇵🇰
+          {/* Legal Links Bar */}
+          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1.5 font-medium">
+            <Link href="/privacy-policy" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">
+              Privacy Policy
+            </Link>
+            <span className="text-gray-300 dark:text-gray-700">|</span>
+            <Link href="/subscription-plans" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">
+              Subscription Plans
+            </Link>
+            <span className="text-gray-300 dark:text-gray-700">|</span>
+            <Link href="/faqs" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">
+              FAQ&apos;s
+            </Link>
+            <span className="text-gray-300 dark:text-gray-700">|</span>
+            <Link href="/refund-policy" className="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">
+              Refund Policy
+            </Link>
           </div>
 
-          <div className="flex items-center space-x-2 bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 px-4 py-2 rounded-xl border border-blue-100 dark:border-cyan-800/30 shadow-sm transition-all hover:scale-105">
+          {/* Offline Trust Badge */}
+          <div className="flex items-center space-x-2 bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 px-4 py-2 rounded-xl border border-blue-100 dark:border-cyan-800/30 shadow-sm">
             <Shield className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
-            <span className="text-sm font-semibold text-cyan-800 dark:text-cyan-300">
-              100% Secure Local Storage
+            <span className="text-xs font-semibold text-cyan-800 dark:text-cyan-300 whitespace-nowrap">
+              100% Offline-First Architecture
             </span>
           </div>
         </div>

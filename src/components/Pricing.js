@@ -95,8 +95,13 @@ export default function Pricing() {
   ];
 
   const handlePlanSelect = (planName) => {
-    // Scroll to contact section for demo request
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    const contactEl = document.getElementById('contact');
+    if (contactEl) {
+      contactEl.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      const msg = encodeURIComponent(`Hello iCreative Solutions, I am interested in getting started with the ${planName} Plan for my store. Please provide onboarding details.`);
+      window.open(`https://wa.me/923275848916?text=${msg}`, '_blank');
+    }
   };
 
   return (
@@ -274,7 +279,14 @@ export default function Pricing() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => {
+                const contactEl = document.getElementById('contact');
+                if (contactEl) {
+                  contactEl.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                  window.location.href = '/contact';
+                }
+              }}
               className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-sky-500 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl hover:shadow-cyan-500/25 transition-all duration-300 hover:scale-105"
             >
               Get Free Consultation
@@ -284,7 +296,7 @@ export default function Pricing() {
               href="tel:+923275848916"
               className="px-6 py-3 border-2 border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-xl font-semibold hover:border-cyan-500 hover:text-cyan-600 dark:hover:text-cyan-400 transition-all duration-300"
             >
-              Call: +92 370 6352186
+              Call: +92 327 5848916
             </a>
           </div>
         </div>
