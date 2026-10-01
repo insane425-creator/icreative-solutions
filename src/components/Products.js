@@ -1,175 +1,177 @@
 'use client';
 
-import { ArrowRight, Package, ShoppingCart, Users, Star } from 'lucide-react';
+import { ArrowRight, Pill, ShoppingCart, Sparkles, CheckCircle2, Layers } from 'lucide-react';
+import Link from 'next/link';
 
 const products = [
   {
-    icon: Package,
+    icon: Pill,
     title: "PharmAssist",
-    subtitle: "Pharmacy POS & Management System",
-    description: "The complete POS solution for pharmacies in Pakistan. Manage inventory, prescriptions, and compliance in one powerful platform.",
-    features: [
-      "Prescription & inventory tracking",
-      "Expiry date alerts & notifications",
-      "Patient & customer records",
-      "Insurance & billing integration",
-      "Regulatory compliance tools"
+    category: "Healthcare & Pharmacy POS",
+    subtitle: "Complete Pharmacy Management & Retail System",
+    description: "Built for Pakistani pharmacies and medical stores to streamline high-volume dispensing, eliminate expiry dead-stock, and ensure effortless compliance.",
+    highlights: [
+      "14,000+ Preloaded Pakistani Medicine Database",
+      "Proactive Expiry Date Tracking & Shelf Audits",
+      "Offline-First Engine — 100% Billing Uptime",
+      "Digital Invoicing, Thermal Receipts & Audit Trails",
+      "Wholesale Supplier Ledger & Narcotics Register"
     ],
-    demoLink: "/pharmassist",
-    comingSoon: false,
-    badge: "Most Popular"
+    link: "/pharmassist",
+    badge: "Flagship POS Suite",
+    isExternal: false,
+    ctaText: "Explore Platform & Packages"
   },
   {
     icon: ShoppingCart,
     title: "GrowAssist",
-    subtitle: "Grocery Store POS System",
-    description: "A modern POS designed for supermarkets, kiryana stores, and retail shops across Pakistan.",
-    features: [
-      "Multi-category inventory management",
-      "Barcode scanning & dynamic pricing",
-      "Customer loyalty programs",
-      "Supplier & purchase management",
-      "Real-time sales analytics"
+    category: "Supermarket & Retail POS",
+    subtitle: "Omnichannel Grocery & Departmental Platform",
+    description: "Engineered for high-footfall supermarkets, marts, and FMCG retailers with sub-second barcode scans and multi-counter real-time ledger sync.",
+    highlights: [
+      "Sub-second Barcode Processing & Multi-Counter Sync",
+      "Dynamic Promotional Pricing & Bulk Wholesale Rates",
+      "Inventory Reorder Triggers & Stock Shrinkage Alerts",
+      "Customer Credit Ledger (Khata) & Loyalty Points",
+      "Cloud Analytics & Remote Owner Mobile App"
     ],
-    demoLink: "https://growassist.vercel.app",
-    comingSoon: false,
-    badge: "New"
+    link: "https://growassist.vercel.app",
+    badge: "Retail & Mart Edition",
+    isExternal: true,
+    ctaText: "Launch Live Demo"
   }
 ];
 
-function ProductCard({ icon: Icon, title, subtitle, description, features, comingSoon = false, demoLink, badge }) {
-  const handleViewProduct = () => {
-    if (!comingSoon && demoLink) {
-      window.open(demoLink, '_blank');
-    }
-  };
-
+export default function Products() {
   const handleRequestDemo = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <div className="group relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:border-cyan-200 dark:hover:border-cyan-700 shadow-sm hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 hover:-translate-y-1">
-      {/* Badge */}
-      {badge && (
-        <div className="absolute top-6 right-6 z-10">
-          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r from-cyan-500 to-sky-500 text-white shadow-sm">
-            <Star className="w-3 h-3 mr-1" />
-            {badge}
-          </span>
-        </div>
-      )}
-      
-      <div className="p-8">
-        {/* Icon */}
-        <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-r from-cyan-500 to-sky-500 text-white mb-6 group-hover:scale-110 transition-transform duration-300">
-          <Icon className="w-6 h-6" />
-        </div>
-        
-        {/* Content */}
-        <div className="mb-6">
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-            {title}
-          </h3>
-          <p className="text-sm text-cyan-600 dark:text-cyan-400 font-medium mb-3">
-            {subtitle}
-          </p>
-          <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-            {description}
-          </p>
-        </div>
-        
-        {/* Features */}
-        <div className="space-y-3 mb-8">
-          {features.map((feature, index) => (
-            <div key={index} className="flex items-start space-x-3">
-              <div className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-cyan-500 mt-2"></div>
-              <span className="text-sm text-gray-600 dark:text-gray-300">
-                {feature}
-              </span>
-            </div>
-          ))}
-        </div>
-        
-        {/* Actions */}
-        <div className="flex flex-col space-y-3">
-          <button 
-            onClick={handleViewProduct}
-            className="group/btn w-full flex items-center justify-center space-x-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-sky-500 text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
-            disabled={comingSoon}
-          >
-            <span>{comingSoon ? 'Coming Soon' : 'View Product'}</span>
-            {!comingSoon && <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />}
-          </button>
-          
-          <button 
-            onClick={handleRequestDemo}
-            className="w-full px-6 py-3 border-2 border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-xl font-semibold hover:border-cyan-500 hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-cyan-50/50 dark:hover:bg-cyan-900/20 transition-all duration-300"
-          >
-            Request Demo
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-export default function Products() {
-  return (
-    <section id="products" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50/50 dark:bg-gray-900/50">
+    <section id="products" className="py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-950 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 text-sm font-medium mb-6">
-            Our POS Products
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 dark:text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-4">
+            <Sparkles className="w-3.5 h-3.5 text-cyan-500" />
+            <span>Proprietary Platforms</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
-            Built for Pakistani Businesses
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-gray-950 dark:text-white tracking-tight mb-6">
+            Industry-Specific Solutions Engineered for Scale
           </h2>
-          <p className="text-xl max-w-3xl mx-auto text-gray-600 dark:text-gray-300 leading-relaxed">
-            Specialized POS solutions combining global tech standards with local business needs. 
-            Fast, secure, and designed for the unique challenges of running businesses in Pakistan.
+          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+            Our purpose-built software architectures empower enterprise retailers to replace obsolete desktop billing software with modern, reliable, and intelligent systems.
           </p>
         </div>
-        
+
         {/* Products Grid */}
         <div className="grid lg:grid-cols-2 gap-8 mb-16">
-          {products.map((product, index) => (
-            <ProductCard
-              key={index}
-              icon={product.icon}
-              title={product.title}
-              subtitle={product.subtitle}
-              description={product.description}
-              features={product.features}
-              demoLink={product.demoLink}
-              comingSoon={product.comingSoon}
-              badge={product.badge}
-            />
-          ))}
+          {products.map((product, index) => {
+            const Icon = product.icon;
+            return (
+              <div
+                key={index}
+                className="group relative rounded-3xl bg-gray-50/70 dark:bg-gray-900/60 border border-gray-200/80 dark:border-gray-800 p-8 sm:p-10 shadow-sm hover:shadow-2xl hover:border-cyan-500/40 dark:hover:border-cyan-400/40 transition-all duration-300 flex flex-col justify-between"
+              >
+                <div>
+                  {/* Badge & Category */}
+                  <div className="flex items-center justify-between gap-4 mb-6">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-cyan-700 dark:text-cyan-300 px-3.5 py-1.5 rounded-full bg-cyan-500/15 border border-cyan-500/25">
+                      {product.badge}
+                    </span>
+                    <span className="text-xs font-medium text-gray-500 dark:text-gray-400">
+                      {product.category}
+                    </span>
+                  </div>
+
+                  {/* Header Title */}
+                  <div className="flex items-center space-x-4 mb-4">
+                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-cyan-500 to-sky-500 text-white flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
+                      <Icon className="w-7 h-7" />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl sm:text-3xl font-extrabold text-gray-950 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                        {product.title}
+                      </h3>
+                      <p className="text-xs sm:text-sm font-medium text-gray-500 dark:text-gray-400">
+                        {product.subtitle}
+                      </p>
+                    </div>
+                  </div>
+
+                  <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base leading-relaxed mb-8">
+                    {product.description}
+                  </p>
+
+                  {/* Feature Highlights */}
+                  <div className="space-y-3 mb-10">
+                    <p className="text-xs font-bold uppercase tracking-wider text-gray-900 dark:text-gray-200">
+                      Key Technical Capabilities:
+                    </p>
+                    {product.highlights.map((feat, fIndex) => (
+                      <div key={fIndex} className="flex items-start space-x-3 text-sm text-gray-600 dark:text-gray-300">
+                        <CheckCircle2 className="w-4 h-4 text-cyan-500 mt-0.5 flex-shrink-0" />
+                        <span>{feat}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Actions */}
+                <div className="pt-6 border-t border-gray-200/70 dark:border-gray-800/80 flex flex-col sm:flex-row gap-3">
+                  {product.isExternal ? (
+                    <a
+                      href={product.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-sky-600 text-white font-semibold text-sm hover:shadow-lg hover:shadow-cyan-500/25 transition-all text-center flex items-center justify-center space-x-2"
+                    >
+                      <span>{product.ctaText}</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </a>
+                  ) : (
+                    <Link
+                      href={product.link}
+                      className="flex-1 px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-sky-600 text-white font-semibold text-sm hover:shadow-lg hover:shadow-cyan-500/25 transition-all text-center flex items-center justify-center space-x-2"
+                    >
+                      <span>{product.ctaText}</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  )}
+                  <button
+                    onClick={handleRequestDemo}
+                    className="px-6 py-3.5 rounded-xl bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 font-semibold text-sm hover:border-cyan-500 hover:text-cyan-600 dark:hover:text-cyan-400 transition-all text-center"
+                  >
+                    Schedule Demo
+                  </button>
+                </div>
+              </div>
+            );
+          })}
         </div>
-        
-        {/* Coming Soon Section */}
-        <div className="text-center">
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-cyan-50 to-sky-50 dark:from-gray-800 dark:to-gray-800 border border-cyan-200/50 dark:border-cyan-700/50 p-8">
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 to-sky-500/5"></div>
-            <div className="relative">
-              <Users className="w-12 h-12 mx-auto mb-4 text-cyan-500" />
-              <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
-                More Solutions Coming Soon
-              </h3>
-              <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-6">
-                We're constantly innovating to help more businesses succeed. Upcoming solutions include 
-                <span className="font-semibold text-cyan-600 dark:text-cyan-400"> RestaurantAssist</span> and 
-                <span className="font-semibold text-cyan-600 dark:text-cyan-400"> RetailAssist</span>, 
-                designed for Pakistan's evolving retail sector.
+
+        {/* Enterprise Roadmap / R&D Strip (Systems Ltd Style) */}
+        <div className="rounded-3xl bg-gradient-to-br from-gray-900 via-gray-950 to-slate-900 border border-gray-800 p-8 sm:p-10 text-white shadow-xl flex flex-col lg:flex-row items-center justify-between gap-8">
+          <div className="flex items-start space-x-5 max-w-2xl">
+            <div className="w-12 h-12 rounded-2xl bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center text-cyan-400 flex-shrink-0 mt-1">
+              <Layers className="w-6 h-6" />
+            </div>
+            <div>
+              <div className="inline-block px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 text-xs font-semibold uppercase tracking-wider mb-2">
+                R&D & Enterprise Roadmap
+              </div>
+              <h3 className="text-xl sm:text-2xl font-bold">Custom Enterprise Engineering & Vertical Extensions</h3>
+              <p className="text-gray-400 text-sm mt-1 leading-relaxed">
+                Beyond PharmAssist and GrowAssist, we design custom multi-branch ERP integrations, restaurant management engines, and automated cloud sync architectures for large retail groups.
               </p>
-              <button className="inline-flex items-center space-x-2 px-6 py-3 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-xl font-semibold border border-gray-200 dark:border-gray-600 hover:border-cyan-500 hover:text-cyan-600 dark:hover:text-cyan-400 transition-all duration-300">
-                <span>Get Notified</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
             </div>
           </div>
+          <button
+            onClick={handleRequestDemo}
+            className="w-full lg:w-auto px-6 py-3.5 rounded-xl bg-white hover:bg-gray-100 text-gray-950 font-bold text-sm whitespace-nowrap transition-all shadow-lg hover:scale-105"
+          >
+            Consult Our Engineering Team
+          </button>
         </div>
       </div>
     </section>

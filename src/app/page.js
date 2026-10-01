@@ -2,15 +2,16 @@
 import NavigationBar from '../components/NavigationBar';
 import Hero from '../components/Hero';
 import Features from '../components/Features';
+import IndustriesSection from '../components/IndustriesSection';
 import Products from '../components/Products';
+import HomeFounderSection from '../components/HomeFounderSection';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
-import Pricing from '../components/Pricing';
 
 export const metadata = {
-  title: 'iCreative Solutions – Smart POS Software for Pakistani Businesses',
+  title: 'iCreative Solutions – Enterprise Software & Smart POS Solutions',
   description:
-    'Empowering pharmacies and grocery stores across Pakistan with intelligent, offline-capable POS software. Try PharmAssist & GrowAssist free for 7 days.',
+    'Engineering next-generation digital solutions, resilient POS architectures, and enterprise software for Pakistani businesses and retail leaders.',
   alternates: {
     canonical: 'https://icreative.vercel.app',
   },
@@ -18,12 +19,13 @@ export const metadata = {
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 text-gray-900 dark:text-white transition-colors duration-300">
+    <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors duration-300">
       <NavigationBar />
       <Hero />
       <Features />
+      <IndustriesSection />
       <Products />
-      <Pricing />
+      <HomeFounderSection />
       <Contact />
       <Footer />
     </div>

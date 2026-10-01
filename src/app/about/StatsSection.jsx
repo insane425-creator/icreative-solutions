@@ -1,23 +1,23 @@
 const statsData = [
   { 
-    value: "100+", 
-    label: "Businesses Served",
-    description: "Pakistani businesses trust our solutions"
+    value: "Zero", 
+    label: "Migration Downtime",
+    description: "Seamless data transition with zero sales interruptions"
   },
   { 
     value: "99.9%", 
-    label: "Uptime Guarantee",
-    description: "Always-on reliability for your business"
+    label: "System Uptime",
+    description: "Continuous operational stability for your counters"
+  },
+  { 
+    value: "100%", 
+    label: "Offline-First",
+    description: "Zero downtime during internet or power disruptions"
   },
   { 
     value: "24/7", 
     label: "Local Support",
-    description: "Dedicated Pakistani support team"
-  },
-  { 
-    value: "50+", 
-    label: "Team Members",
-    description: "Passionate individuals driving innovation"
+    description: "Direct engineering assistance via WhatsApp & phone"
   }
 ];
 

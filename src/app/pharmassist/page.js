@@ -16,6 +16,7 @@ import PharmInventory from '../../components/pharmassist/PharmInventory';
 import PharmOperations from '../../components/pharmassist/PharmOperations';
 import PharmAbout from '../../components/pharmassist/PharmAbout';
 import PharmCTA from '../../components/pharmassist/PharmCTA';
+import Pricing from '../../components/Pricing';
 
 // Lazy load the 3D scene for better performance
 const PharmacyScene = lazy(() => import('../../components/PharmacyScene'));
@@ -132,6 +133,9 @@ function ClassicExperience({ onToggle3D }) {
       <PharmInventory />
       <PharmOperations />
       <PharmAbout />
+      <div id="pricing" className="py-6">
+        <Pricing />
+      </div>
       <PharmCTA />
     </div>
   );

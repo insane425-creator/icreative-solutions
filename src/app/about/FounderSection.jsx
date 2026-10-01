@@ -1,15 +1,15 @@
-import { Award, Star, Sparkles } from 'lucide-react';
+import { Award, Star, Sparkles, Linkedin } from 'lucide-react';
 import ProfileImage from './ProfileImage';
 
 const founderData = {
   name: "Imad Khan Lodhi",
   title: "Founder & CEO, iCreative Solutions",
-  bio: "Passionate about transforming Pakistani businesses through innovative POS solutions. Building the future of retail technology, one business at a time.",
-  imagePath: "/community/Founder.png",
+  bio: "Focused on engineering practical, offline-first software that empowers retail stores, pharmacies, and growing businesses across Pakistan to operate with confidence and precision.",
+  imagePath: "/community/founder.png",
+  linkedin: "https://www.linkedin.com/in/immadkhanlodhi/",
   achievements: [
-    "100+ Businesses Digitally Transformed",
-    "Leading Pakistan's POS Revolution",
-    "Tech Entrepreneur & Innovator"
+    "Zero-Downtime Migration Specialist",
+    "Offline-First Architecture Specialist"
   ]
 };
 
@@ -33,7 +33,7 @@ export default function FounderSection({ imageErrors, onImageError }) {
             Meet Our Founder
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
-            The visionary leading Pakistan's digital transformation
+            Building practical, resilient software solutions for Pakistani businesses
           </p>
         </div>
 
@@ -45,7 +45,7 @@ export default function FounderSection({ imageErrors, onImageError }) {
               {/* Glowing Background */}
               <div className="absolute -inset-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 rounded-3xl opacity-30 dark:opacity-40 blur-md group-hover:opacity-60 dark:group-hover:opacity-100 group-hover:blur-xl transition-all duration-700"></div>
 
-              <div className="relative h-[450px] rounded-3xl bg-white dark:bg-gray-900 p-1 shadow-2xl">
+              <div className="relative h-[500px] rounded-3xl bg-white dark:bg-gray-900 p-1 shadow-2xl">
                 <div className="w-full h-full rounded-[22px] overflow-hidden bg-gray-100 dark:bg-gray-800">
                   <ProfileImage
                     src={founderData.imagePath}
@@ -69,8 +69,22 @@ export default function FounderSection({ imageErrors, onImageError }) {
             <h3 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white tracking-tight">
               {founderData.name}
             </h3>
-            <div className="inline-block px-5 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 dark:text-cyan-400 font-semibold text-lg">
-              {founderData.title}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3">
+              <div className="inline-block px-5 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 dark:text-cyan-400 font-semibold text-base sm:text-lg">
+                {founderData.title}
+              </div>
+              {founderData.linkedin && (
+                <a
+                  href={founderData.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-200 hover:text-[#0A66C2] dark:hover:text-[#0A66C2] hover:border-[#0A66C2]/40 shadow-sm hover:shadow-md transition-all duration-300 text-sm font-medium group"
+                  aria-label={`${founderData.name}'s LinkedIn Profile`}
+                >
+                  <Linkedin className="w-4 h-4 text-[#0A66C2] group-hover:scale-110 transition-transform" />
+                  <span>Connect on LinkedIn</span>
+                </a>
+              )}
             </div>
             <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-lg mx-auto lg:mx-0">
               {founderData.bio}

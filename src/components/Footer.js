@@ -132,7 +132,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-gray-200 dark:border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400 font-medium text-center md:text-left">
-            <span>© {new Date().getFullYear()} iCreative Solutions.</span>
+            <span>© 2025 iCreative Solutions.</span>
             <span className="hidden sm:inline">Proudly engineered in Pakistan 🇵🇰</span>
           </div>
 

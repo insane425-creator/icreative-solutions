@@ -1,112 +1,117 @@
 'use client';
 
-import { Zap, Shield, BarChart3, Globe, Clock, Headphones } from 'lucide-react';
+import { Zap, ShieldCheck, BarChart3, WifiOff, FileCheck2, Network, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
-const features = [
+const capabilities = [
   {
     icon: Zap,
-    title: "Lightning-Fast Checkout",
-    description: "Optimized for peak hours and busy stores with instant transaction processing and minimal wait times."
+    title: "High-Velocity POS Engine",
+    category: "Retail Performance",
+    description: "Sub-second barcode lookups, streamlined multi-item checkout, and queue-busting architecture engineered for Pakistan's busiest retail hours."
   },
   {
-    icon: Shield,
-    title: "Secure & Trustworthy",
-    description: "Bank-grade security with regular backups, data encryption, and 99.9% uptime guarantee for your peace of mind."
+    icon: WifiOff,
+    title: "Offline-First Resilience",
+    category: "Architecture",
+    description: "Built-in local database failover ensures your business runs uninterrupted during internet blackouts or load-shedding, syncing silently when reconnected."
   },
   {
     icon: BarChart3,
-    title: "Smart Analytics",
-    description: "Comprehensive dashboards and reports that drive informed business decisions with real-time insights."
+    title: "Predictive Inventory & Expiry AI",
+    category: "Data Intelligence",
+    description: "Proactive expiry date alarms, batch management, and automatic reorder thresholds that systematically eliminate retail wastage and dead stock."
   },
   {
-    icon: Globe,
-    title: "Designed for Pakistan",
-    description: "Local compliance, Urdu/English support, and offline-first reliability built for Pakistani businesses."
+    icon: FileCheck2,
+    title: "Tax & Financial Tracking",
+    category: "Accounting",
+    description: "Configurable sales tax, custom retail discounts, detailed prescription audit logs, and instant financial balance sheets."
   },
   {
-    icon: Clock,
-    title: "24/7 Reliability",
-    description: "Always-on system with automatic updates and continuous monitoring to keep your business running."
+    icon: Network,
+    title: "Multi-Store Cloud Consolidation",
+    category: "Enterprise Scale",
+    description: "Consolidate sales, stock transfers, and branch-level performance into a single unified executive dashboard from anywhere in the world."
   },
   {
-    icon: Headphones,
-    title: "Local Support Team",
-    description: "Dedicated Pakistani support team available round-the-clock to help you succeed and grow."
+    icon: ShieldCheck,
+    title: "Bank-Grade Data Security",
+    category: "Infrastructure",
+    description: "Automated end-of-day encrypted backups, role-based employee permission gates, and comprehensive tamper-proof audit trails."
   }
 ];
 
-function FeatureCard({ icon: Icon, title, description }) {
-  return (
-    <div className="group relative p-8 bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 hover:border-cyan-200 dark:hover:border-cyan-700 shadow-sm hover:shadow-lg hover:shadow-cyan-500/10 transition-all duration-300 hover:-translate-y-1">
-      {/* Gradient background on hover */}
-      <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 to-sky-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-      
-      <div className="relative">
-        {/* Icon */}
-        <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-r from-cyan-500 to-sky-500 text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-          <Icon className="w-7 h-7" />
-        </div>
-        
-        {/* Content */}
-        <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors duration-300">
-          {title}
-        </h3>
-        <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-          {description}
-        </p>
-      </div>
-    </div>
-  );
-}
-
 export default function Features() {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
+    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-50/60 dark:bg-gray-900/60 border-y border-gray-200/60 dark:border-gray-800/60">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 text-sm font-medium mb-6">
-            Why Choose iCreative Solutions?
+        {/* Section Header - Systems Ltd Style */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 dark:text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-4">
+              Core Capabilities
+            </div>
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-gray-950 dark:text-white tracking-tight">
+              Enterprise Technology Designed for Operational Excellence
+            </h2>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
-            Built with Pakistani Businesses in Mind
-          </h2>
-          <p className="text-xl max-w-3xl mx-auto text-gray-600 dark:text-gray-300 leading-relaxed">
-            We understand the unique challenges of running businesses in Pakistan. 
-            That's why our solutions combine <span className="font-semibold text-cyan-600 dark:text-cyan-400">global tech standards</span> with 
-            <span className="font-semibold text-cyan-600 dark:text-cyan-400"> local business needs</span>.
+          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-md">
+            Combining global software standards with local market realities to deliver unbreakable retail infrastructure.
           </p>
         </div>
         
-        {/* Features Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <FeatureCard
-              key={index}
-              icon={feature.icon}
-              title={feature.title}
-              description={feature.description}
-            />
-          ))}
+        {/* Capabilities Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {capabilities.map((cap, index) => {
+            const Icon = cap.icon;
+            return (
+              <div
+                key={index}
+                className="group relative p-8 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200/80 dark:border-gray-800 shadow-sm hover:shadow-xl hover:shadow-cyan-500/10 hover:border-cyan-500/40 dark:hover:border-cyan-400/40 transition-all duration-300 flex flex-col justify-between hover:-translate-y-1"
+              >
+                <div>
+                  {/* Top Bar with Category & Icon */}
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-cyan-600 dark:text-cyan-400 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20">
+                      {cap.category}
+                    </span>
+                    <div className="w-12 h-12 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200/60 dark:border-gray-700/60 flex items-center justify-center text-cyan-600 dark:text-cyan-400 group-hover:scale-110 group-hover:bg-gradient-to-tr group-hover:from-cyan-500 group-hover:to-sky-500 group-hover:text-white transition-all duration-300 shadow-sm">
+                      <Icon className="w-6 h-6" />
+                    </div>
+                  </div>
+
+                  <h3 className="text-xl font-bold text-gray-950 dark:text-white mb-3 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                    {cap.title}
+                  </h3>
+                  
+                  <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base leading-relaxed">
+                    {cap.description}
+                  </p>
+                </div>
+
+                <div className="mt-8 pt-4 border-t border-gray-100 dark:border-gray-800/60 flex items-center text-xs font-semibold text-gray-500 dark:text-gray-400 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                  <span>Enterprise Grade</span>
+                  <ArrowRight className="w-3.5 h-3.5 ml-1.5 transition-transform group-hover:translate-x-1" />
+                </div>
+              </div>
+            );
+          })}
         </div>
-        
-        {/* Bottom CTA */}
-        <div className="text-center mt-16">
-          <div className="inline-flex items-center space-x-4 p-6 bg-gradient-to-r from-cyan-50 to-sky-50 dark:from-gray-800 dark:to-gray-800 rounded-2xl border border-cyan-200/50 dark:border-cyan-700/50">
-            <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                Trusted by 100+ Pakistani businesses
-              </span>
-            </div>
-            <div className="w-px h-6 bg-gray-300 dark:bg-gray-600"></div>
-            <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 bg-cyan-500 rounded-full"></div>
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                Growing every day
-              </span>
-            </div>
+
+        {/* Bottom Banner */}
+        <div className="mt-16 p-8 rounded-3xl bg-gradient-to-r from-gray-900 via-gray-950 to-slate-900 text-white border border-gray-800 flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-wider text-cyan-400">Guaranteed Resilience</span>
+            <h4 className="text-xl sm:text-2xl font-bold mt-1">Ready to upgrade your enterprise infrastructure?</h4>
+            <p className="text-sm text-gray-400 mt-1">Deploy our systems with zero migration downtime and complete staff onboarding.</p>
           </div>
+          <Link
+            href="/#contact"
+            className="px-6 py-3.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-gray-950 font-bold text-sm whitespace-nowrap transition-all shadow-lg hover:scale-105"
+          >
+            Speak with an Engineer
+          </Link>
         </div>
       </div>
     </section>

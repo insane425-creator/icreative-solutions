@@ -1,12 +1,13 @@
-import { Users, Star } from 'lucide-react';
+import { Users, Star, Linkedin } from 'lucide-react';
 import ProfileImage from './ProfileImage';
 
 const coreTeamData = [
   {
     name: "Noman Mujeeb",
-    title: "Chief Technology Officer",
-    tagline: "Code wizard who turns coffee into scalable solutions ☕️",
-    imagePath: "/community/core/noman.jpg"
+    title: "Software Quality Assurance",
+    tagline: "Precision engineer who turns caffeine into clean quality ☕️",
+    imagePath: "/community/core/noman.jpg",
+    linkedin: "https://www.linkedin.com/in/noman-mujeeb-910583216/"
   },
   {
     name: "Saad Ali",
@@ -20,7 +21,8 @@ const extendedMember = {
   name: "Huzaifa Shams",
   title: "Tech Enthusiast",
   tagline: "Dedicated to pushing boundaries and exploring new technologies 💻",
-  imagePath: "/community/group-tech/huzaifa.jpg"
+  imagePath: "/community/group-tech/huzaifa.jpg",
+  linkedin: "https://www.linkedin.com/in/huzaifa-shams-b3a6971ab/"
 };
 
 export default function CoreTeamSection({ imageErrors, onImageError }) {
@@ -76,9 +78,23 @@ export default function CoreTeamSection({ imageErrors, onImageError }) {
 
               {/* Text Content */}
               <div className="text-center mt-12 space-y-4">
-                <h4 className="text-3xl font-bold text-gray-900 dark:text-white tracking-wide">
-                  {member.name}
-                </h4>
+                <div className="flex items-center justify-center gap-2.5">
+                  <h4 className="text-3xl font-bold text-gray-900 dark:text-white tracking-wide">
+                    {member.name}
+                  </h4>
+                  {member.linkedin && (
+                    <a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-50 dark:bg-gray-800 text-[#0A66C2] hover:bg-[#0A66C2] hover:text-white border border-blue-100 dark:border-gray-700 shadow-sm hover:scale-110 transition-all duration-200"
+                      aria-label={`${member.name}'s LinkedIn Profile`}
+                      title={`${member.name} on LinkedIn`}
+                    >
+                      <Linkedin className="w-4 h-4" />
+                    </a>
+                  )}
+                </div>
                 <div className="inline-block px-5 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 dark:text-cyan-400 font-semibold text-sm">
                   {member.title}
                 </div>
@@ -124,9 +140,23 @@ export default function CoreTeamSection({ imageErrors, onImageError }) {
 
           {/* Text Content */}
           <div className="text-center mt-12 space-y-4">
-            <h4 className="text-3xl font-bold text-gray-900 dark:text-white tracking-wide">
-              {extendedMember.name}
-            </h4>
+            <div className="flex items-center justify-center gap-2.5">
+              <h4 className="text-3xl font-bold text-gray-900 dark:text-white tracking-wide">
+                {extendedMember.name}
+              </h4>
+              {extendedMember.linkedin && (
+                <a
+                  href={extendedMember.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-50 dark:bg-gray-800 text-[#0A66C2] hover:bg-[#0A66C2] hover:text-white border border-blue-100 dark:border-gray-700 shadow-sm hover:scale-110 transition-all duration-200"
+                  aria-label={`${extendedMember.name}'s LinkedIn Profile`}
+                  title={`${extendedMember.name} on LinkedIn`}
+                >
+                  <Linkedin className="w-4 h-4" />
+                </a>
+              )}
+            </div>
             <div className="inline-block px-5 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 dark:text-cyan-400 font-semibold text-sm">
               {extendedMember.title}
             </div>
