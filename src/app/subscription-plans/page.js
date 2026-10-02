@@ -21,18 +21,19 @@ export const metadata = {
 
 export default function SubscriptionPlansPage() {
   const comparisonFeatures = [
-    { name: "Device / Cash Counter Access", starter: "1 Device", semiAnnual: "1 Device", annual: "1 Device", enterprise: "Up to 3 Devices" },
-    { name: "Offline-First Engine (Zero-Downtime Billing)", starter: true, semiAnnual: true, annual: true, enterprise: true },
-    { name: "Pakistani Preloaded Drug & FMCG Database", starter: true, semiAnnual: true, annual: true, enterprise: true },
-    { name: "Batch & Proactive Expiry Date Tracking", starter: "Basic", semiAnnual: "Advanced", annual: "Advanced", enterprise: "Advanced" },
-    { name: "Local LAN Multi-Counter Real-time Sync", starter: false, semiAnnual: false, annual: false, enterprise: true },
-    { name: "Thermal Receipts & Invoicing (80mm & 58mm)", starter: true, semiAnnual: true, annual: true, enterprise: true },
-    { name: "Wholesale Supplier Ledger & Narcotics Register", starter: false, semiAnnual: true, annual: true, enterprise: true },
-    { name: "Customer Credit Khata & Loyalty Program", starter: "Basic", semiAnnual: true, annual: true, enterprise: true },
-    { name: "Free Software Updates & Bug Fixes", starter: true, semiAnnual: true, annual: true, enterprise: true },
-    { name: "On-Site Setup & Technician Visit", starter: "Optional Add-on", semiAnnual: "1 Free Visit", annual: "2 Free Visits", enterprise: "Priority On-Site Visits" },
-    { name: "Customer Support Channel", starter: "WhatsApp & Remote", semiAnnual: "Priority Remote", annual: "Dedicated Phone + Remote", enterprise: "24/7 Dedicated Manager" },
-    { name: "Free Trial / Guarantee", starter: "7-Day Free Trial", semiAnnual: "30-Day Guarantee", annual: "30-Day Guarantee", enterprise: "Proof of Concept Pilot" }
+    { name: "Device / Terminal Limit Included", starter: "1 Device", annualPro: "2 Devices (Mgr + Cashier)", multiCounter: "Up to 5 Devices (1 Mgr + 4 Cashiers)", enterprise: "Unlimited Devices & Depots" },
+    { name: "Onboarding & Installation Fee", starter: "FREE Remote Setup", annualPro: "FREE Full Setup", multiCounter: "PKR 30,000 (Was 50k — 70/30 Milestone)", enterprise: "Dedicated Engineer Onboarding" },
+    { name: "Annual Maintenance Rate", starter: "PKR 2,000 / month", annualPro: "PKR 20,000 / year", multiCounter: "PKR 20,000 / year (Locked 2 Years)", enterprise: "Custom Volume Agreement" },
+    { name: "Offline-First Engine (Zero Internet Billing)", starter: true, annualPro: true, multiCounter: true, enterprise: true },
+    { name: "Cashier Internet Requirement", starter: "None (100% Offline)", annualPro: "None (100% Offline)", multiCounter: "Zero Internet (LAN Sync to Manager)", enterprise: "Zero Internet (LAN/WAN Sync)" },
+    { name: "Terminal Invoice Prefixing (C1, C2, C3)", starter: "Single Terminal", annualPro: true, multiCounter: true, enterprise: true },
+    { name: "Preloaded Pakistani Medicine Database (14k+)", starter: true, annualPro: true, multiCounter: true, enterprise: true },
+    { name: "Batch & Proactive Expiry Date Tracking", starter: "Basic", annualPro: "Advanced", multiCounter: "Advanced", enterprise: "Advanced" },
+    { name: "Wholesale Supplier Ledger & Narcotics Log", starter: false, annualPro: true, multiCounter: true, enterprise: true },
+    { name: "Hardware Replacement Allowance", starter: "1 per year", annualPro: "2 Free per year", multiCounter: "2 Free per year", enterprise: "Priority Replacements" },
+    { name: "On-Site Technician Visits", starter: "Add-on (PKR 2,000)", annualPro: "2 Free per year", multiCounter: "2 Setup + 2 Annual Included", enterprise: "Dedicated SLA Visits" },
+    { name: "Support Channels & Hours", starter: "WhatsApp & Remote", annualPro: "Priority WhatsApp & Phone", multiCounter: "Dedicated Phone + WhatsApp (Mon-Sat)", enterprise: "24/7 Priority Emergency" },
+    { name: "Payment Terms / Guarantee", starter: "7-Day Free Trial", annualPro: "30-Day Guarantee", multiCounter: "70% On Signing, 30% After 7 Days Live", enterprise: "Milestone Contract SLA" }
   ];
 
   return (
@@ -101,9 +102,9 @@ export default function SubscriptionPlansPage() {
                 <tr className="bg-gray-100/80 dark:bg-gray-800/80 border-b border-gray-200 dark:border-gray-700">
                   <th className="p-4 sm:p-5 font-bold text-gray-900 dark:text-white">Feature</th>
                   <th className="p-4 sm:p-5 font-bold text-gray-900 dark:text-white text-center">Starter</th>
-                  <th className="p-4 sm:p-5 font-bold text-gray-900 dark:text-white text-center">Semi-Annual</th>
-                  <th className="p-4 sm:p-5 font-bold text-cyan-600 dark:text-cyan-400 text-center bg-cyan-50/50 dark:bg-cyan-900/20">Annual (Best Value)</th>
-                  <th className="p-4 sm:p-5 font-bold text-purple-600 dark:text-purple-400 text-center">Enterprise</th>
+                  <th className="p-4 sm:p-5 font-bold text-gray-900 dark:text-white text-center">Annual Pro</th>
+                  <th className="p-4 sm:p-5 font-bold text-cyan-600 dark:text-cyan-400 text-center bg-cyan-50/50 dark:bg-cyan-900/20">Multi-Counter (5 Devices)</th>
+                  <th className="p-4 sm:p-5 font-bold text-purple-600 dark:text-purple-400 text-center">Enterprise Chain</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
@@ -118,14 +119,14 @@ export default function SubscriptionPlansPage() {
                       ) : row.starter}
                     </td>
                     <td className="p-4 sm:p-5 text-center text-gray-600 dark:text-gray-300">
-                      {typeof row.semiAnnual === 'boolean' ? (
-                        row.semiAnnual ? <Check className="w-5 h-5 text-green-500 mx-auto" /> : <span className="text-gray-300 dark:text-gray-600">—</span>
-                      ) : row.semiAnnual}
+                      {typeof row.annualPro === 'boolean' ? (
+                        row.annualPro ? <Check className="w-5 h-5 text-green-500 mx-auto" /> : <span className="text-gray-300 dark:text-gray-600">—</span>
+                      ) : row.annualPro}
                     </td>
                     <td className="p-4 sm:p-5 text-center text-gray-900 dark:text-white font-semibold bg-cyan-50/30 dark:bg-cyan-900/10">
-                      {typeof row.annual === 'boolean' ? (
-                        row.annual ? <Check className="w-5 h-5 text-cyan-500 mx-auto" /> : <span className="text-gray-300 dark:text-gray-600">—</span>
-                      ) : row.annual}
+                      {typeof row.multiCounter === 'boolean' ? (
+                        row.multiCounter ? <Check className="w-5 h-5 text-cyan-500 mx-auto" /> : <span className="text-gray-300 dark:text-gray-600">—</span>
+                      ) : row.multiCounter}
                     </td>
                     <td className="p-4 sm:p-5 text-center text-gray-600 dark:text-gray-300">
                       {typeof row.enterprise === 'boolean' ? (

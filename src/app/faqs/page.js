@@ -28,18 +28,28 @@ export default function FAQPage() {
     },
     {
       category: 'offline',
-      question: 'How does it handle power cuts or sudden load-shedding?',
-      answer: 'Our software incorporates atomic database write transactions. If power cuts out mid-transaction, your database avoids corruption. Once power is restored or your UPS/generator kicks in, the software boots back up with your entire ledger and inventory state intact.'
+      question: 'How often does the system need internet to keep our license active?',
+      answer: 'Only your main Store Manager PC needs an internet connection once every 30 days to validate your active license. Cashier computers NEVER need internet at all; they simply connect to your Store Manager PC over local in-store Wi-Fi or LAN cable at least once every 15 days to stay synchronized.'
     },
     {
       category: 'offline',
-      question: 'Can multiple cash counters sync together without an internet connection?',
-      answer: 'Yes! On our multi-device plans, multiple cash counters communicate over your in-store Local Area Network (LAN or Wi-Fi router) without needing any internet connection. Counter 1, Counter 2, and Counter 3 deduct from the same central store stock in real-time.'
+      question: 'How do multiple cashier counters prevent duplicate invoice numbers when offline?',
+      answer: 'PharmAssist uses terminal-based invoice numbering (e.g. Counter 1 issues C1-104, Counter 2 issues C2-104). This ensures that multiple cashiers billing simultaneously never create conflicting receipt numbers, and all sales merge accurately into the central ledger.'
+    },
+    {
+      category: 'offline',
+      question: 'How does it handle power cuts or sudden load-shedding?',
+      answer: 'Our software incorporates atomic database write transactions. If power cuts out mid-transaction, your database avoids corruption. Once power is restored or your UPS/generator kicks in, the software boots back up with your entire ledger and inventory state intact.'
     },
     {
       category: 'hardware',
       question: 'What computer hardware do I need to run PharmAssist or GrowAssist?',
       answer: 'Our software is lightweight and engineered to run smoothly on standard, cost-effective Windows hardware. A basic desktop or laptop with an Intel Core i3 (4th gen or higher), 4GB of RAM, and Windows 10 or 11 is more than sufficient.'
+    },
+    {
+      category: 'hardware',
+      question: 'What happens if a computer breaks down or we upgrade our PC?',
+      answer: 'Your license includes two (2) free hardware replacements per year. If a cashier PC fails or you upgrade your computer, we remotely reset the license binding on the old machine and activate your new computer with zero loss of data.'
     },
     {
       category: 'hardware',
@@ -58,28 +68,33 @@ export default function FAQPage() {
     },
     {
       category: 'pricing',
+      question: 'What are the payment milestones for full store installation?',
+      answer: 'For our Multi-Counter on-site installation, we use a fair milestone system: PKR 30,000 total onboarding fee split as 70% (PKR 21,000) at contract signing, and the remaining 30% (PKR 9,000) only after full setup, staff training, and 7 days of live, successful store operation.'
+    },
+    {
+      category: 'pricing',
+      question: 'Is the annual maintenance fee fixed or will it increase next year?',
+      answer: 'Your annual maintenance rate (PKR 20,000/year) is strictly locked for 2 years from your installation date. It covers minor software improvements, bug fixes, remote WhatsApp/phone support, and 2 scheduled on-site visits per year.'
+    },
+    {
+      category: 'pricing',
+      question: 'What happens if our annual maintenance payment is delayed?',
+      answer: 'We provide a 30-day grace period with reminder notifications. Your data is NEVER deleted. After 30 days, access is paused until dues are cleared. You can also request a free one-time export of all your store records in Excel/CSV within 30 days of termination.'
+    },
+    {
+      category: 'pricing',
       question: 'Is there a free trial before I pay for a subscription?',
       answer: 'Yes. We provide a 7-day risk-free trial on our Starter package so you can install the system on your actual store counter, experience the speed, test receipt printing, and train your staff before making any financial commitment.'
     },
     {
-      category: 'pricing',
-      question: 'How do subscription renewals and payments work in Pakistan?',
-      answer: 'We accept payments via direct online bank transfer (IBFT), JazzCash, EasyPaisa, or on-site cash collection via our regional technicians in Abbottabad, Hazara, and surrounding districts.'
-    },
-    {
-      category: 'pricing',
-      question: 'Are future software updates included in my plan?',
-      answer: 'Yes. All active subscribers receive regular software updates, performance improvements, security enhancements, and regulatory updates (such as updated drug registers and tax compliance tools) at zero additional charge.'
-    },
-    {
       category: 'support',
-      question: 'What kind of support do you provide if a problem occurs during peak hours?',
-      answer: 'We offer immediate WhatsApp support, direct phone lines, and remote screen-sharing via AnyDesk/TeamViewer. For critical issues, our senior engineers respond within minutes to ensure your sales counter never stops.'
+      question: 'What are your support hours and emergency response policy?',
+      answer: 'Our standard support is active Monday to Saturday from 10:00 AM to 8:00 PM via WhatsApp, phone, and remote AnyDesk. Outside these hours, we provide emergency priority response for critical "System Down" situations.'
     },
     {
       category: 'support',
       question: 'Do you offer on-site technician visits to our pharmacy or store?',
-      answer: 'Yes! Our Semi-Annual and Annual plans include free scheduled on-site visits for hardware setup, staff onboarding, and network configuration in Abbottabad, Mansehra, Haripur, Rawalpindi/Islamabad, and partner coverage zones across Pakistan.'
+      answer: 'Yes! Our multi-counter agreement includes 2 visits during installation month plus 2 scheduled on-site maintenance visits per year in Abbottabad, Hazara region, Rawalpindi/Islamabad, and partner coverage zones across Pakistan.'
     }
   ];
 

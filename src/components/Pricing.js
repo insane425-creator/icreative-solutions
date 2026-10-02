@@ -6,91 +6,93 @@ export default function Pricing() {
   const pricingPlans = [
     {
       name: "Starter",
-      subtitle: "Perfect for small pharmacies",
+      subtitle: "For single-counter pharmacies & stores",
       price: "2,000",
       period: "month",
+      onboarding: "FREE Remote Onboarding",
       originalPrice: null,
-      description: "Try first, decide later approach",
+      description: "Zero commitment, 7-day risk-free trial",
       badge: "7-Day Free Trial",
       badgeColor: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400",
       buttonStyle: "btn-secondary",
       features: [
-        "1 device access",
-        "Unlimited products & invoices",
+        "1 device (Manager + POS in one)",
+        "Zero setup / onboarding fee",
+        "14,000+ Pakistani medicines preloaded",
+        "100% offline billing with thermal receipts",
         "Free updates + remote support",
-        "7-day free trial included",
-        "Basic inventory management",
-        "Customer database"
+        "Customer ledger & khata tracking"
       ],
       popular: false,
       savings: null
     },
     {
-      name: "Semi-Annual",
-      subtitle: "Best value with on-site support",
-      price: "10,000",
-      period: "6 months",
+      name: "Annual Pro",
+      subtitle: "Best value for standalone stores",
+      price: "20,000",
+      period: "year",
+      onboarding: "FREE Remote Onboarding",
       monthlyEquivalent: "1,666",
-      originalPrice: "12,000",
-      description: "Includes free on-site visit worth PKR 3,000",
-      badge: "Free On-site Visit",
+      originalPrice: "24,000",
+      description: "2-year locked maintenance rate guarantee",
+      badge: "2-Year Rate Lock",
       badgeColor: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400",
       buttonStyle: "btn-secondary",
       features: [
-        "1 device access",
-        "Free updates + remote support",
-        "1 free on-site visit (worth PKR 3,000)",
-        "Advanced reporting features",
-        "Priority email support",
-        "Prescription management"
+        "1 Store Manager + 1 Cashier terminal",
+        "Rate locked at PKR 20,000/yr for 2 years",
+        "2 on-site technician visits included per year",
+        "Proactive batch & expiry date tracking",
+        "Priority WhatsApp & phone support (Mon-Sat)",
+        "Wholesale supplier ledger & credit tracking"
       ],
       popular: false,
-      savings: "Save PKR 2,000"
+      savings: "Save PKR 4,000/yr"
     },
     {
-      name: "Annual",
-      subtitle: "Most popular choice",
-      price: "18,000",
+      name: "Multi-Counter",
+      subtitle: "Official Full-Store Agreement License",
+      price: "20,000",
       period: "year",
-      monthlyEquivalent: "1,500",
-      originalPrice: "24,000",
-      description: "2 months free compared to monthly plan",
-      badge: "Most Popular",
+      onboarding: "PKR 30,000 Setup (Was 50k)",
+      monthlyEquivalent: "1,666",
+      originalPrice: "50,000 setup",
+      description: "Milestone: 70% upfront, 30% after 7-day live operation",
+      badge: "Up to 5 Devices Included",
       badgeColor: "bg-gradient-to-r from-cyan-500 to-sky-500 text-white",
       buttonStyle: "btn-primary",
       features: [
-        "1 device access",
-        "Priority support",
-        "2 on-site visits free",
-        "Advanced analytics dashboard",
-        "Phone + email support",
-        "Prescription & compliance tools",
-        "Customer loyalty features"
+        "Up to 5 devices (1 Manager + 4 Cashiers)",
+        "On-site installation & staff training",
+        "Local LAN sync (cashiers need zero internet)",
+        "Terminal prefixing (C1-44, C2-44) zero bill conflict",
+        "2 free hardware PC replacements per year",
+        "2 installation visits + 2 annual visits included",
+        "Additional cashier terminal: PKR 8,000 lifetime"
       ],
       popular: true,
-      savings: "Save 2 months"
+      savings: "40% Off Installation"
     },
     {
-      name: "Enterprise",
-      subtitle: "For chains & large stores",
-      price: "30,000",
-      period: "year",
-      monthlyEquivalent: "2,500",
-      description: "Up to 3 devices, unlimited users",
-      badge: "Multi-Device",
+      name: "Enterprise Chain",
+      subtitle: "For pharmacy chains, marts & depots",
+      price: "Custom",
+      period: "license",
+      onboarding: "Dedicated Engineer Deployment",
+      description: "Multi-branch sync & custom architectures",
+      badge: "Multi-Branch & Marts",
       badgeColor: "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400",
       buttonStyle: "btn-secondary",
       features: [
-        "Up to 3 devices included",
-        "Every extra device: +8,000/year",
-        "Unlimited users (roles: cashier, manager, owner)",
-        "Free remote training sessions",
-        "Dedicated support channel",
-        "Advanced multi-location analytics",
-        "Custom integrations available"
+        "Unlimited counters & warehouse depots",
+        "Centralized multi-store inventory synchronization",
+        "Dedicated technical account manager",
+        "Custom accounting & ERP export pipelines",
+        "Emergency on-site response SLA",
+        "Custom role permissions (Cashier, Manager, Auditor)"
       ],
       popular: false,
-      savings: "Scalable Pricing"
+      savings: "Volume Pricing"
     }
   ];
 
@@ -190,6 +192,13 @@ export default function Pricing() {
                       <p className="text-sm text-green-600 dark:text-green-400 font-medium">
                         {plan.savings}
                       </p>
+                    )}
+
+                    {/* Onboarding note */}
+                    {plan.onboarding && (
+                      <div className="mt-2 inline-flex items-center px-2.5 py-1 rounded-lg bg-white/80 dark:bg-gray-800/80 border border-gray-200/80 dark:border-gray-700 text-xs font-semibold text-gray-800 dark:text-gray-200 shadow-sm">
+                        <span>⚡ Setup: {plan.onboarding}</span>
+                      </div>
                     )}
 
                     <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">

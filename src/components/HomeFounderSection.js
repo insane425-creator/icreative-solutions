@@ -1,12 +1,13 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Quote } from 'lucide-react';
 import { useState } from 'react';
+import Image from 'next/image';
 
 export default function HomeFounderSection() {
   const [imageError, setImageError] = useState(false);
+  const [imgSrc, setImgSrc] = useState('/community/founder11.png');
 
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50/70 dark:bg-gray-900/40 border-t border-gray-200/60 dark:border-gray-800/60">
@@ -19,12 +20,19 @@ export default function HomeFounderSection() {
               <div className="relative w-40 h-40 sm:w-48 sm:h-48 rounded-2xl overflow-hidden border-2 border-cyan-500/30 shadow-lg bg-gray-100 dark:bg-gray-800">
                 {!imageError ? (
                   <Image
-                    src="/community/founder11.png"
+                    src={imgSrc}
                     alt="Imad Khan Lodhi"
                     fill
-                    sizes="(max-width: 768px) 160px, 192px"
+                    sizes="(max-width: 640px) 160px, 192px"
                     className="object-cover"
-                    onError={() => setImageError(true)}
+                    priority
+                    onError={() => {
+                      if (imgSrc === '/community/founder11.png') {
+                        setImgSrc('/community/founder.png');
+                      } else {
+                        setImageError(true);
+                      }
+                    }}
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center text-3xl font-bold bg-gradient-to-tr from-cyan-500 to-sky-600 text-white">

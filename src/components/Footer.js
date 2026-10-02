@@ -142,7 +142,7 @@ export default function Footer() {
 
         {/* Bottom Bar: Copyrights & Legal Navigation */}
         <div className="border-t border-gray-200 dark:border-gray-800 pt-8 mt-4 flex flex-col lg:flex-row items-center justify-between gap-6 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
-          
+
           {/* Copyright notice */}
           <div className="text-center lg:text-left font-medium">
             <span>Copyright © 2024 - 2026 </span>
@@ -175,7 +175,7 @@ export default function Footer() {
           <div className="flex items-center space-x-2 bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 px-4 py-2 rounded-xl border border-blue-100 dark:border-cyan-800/30 shadow-sm">
             <Shield className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
             <span className="text-xs font-semibold text-cyan-800 dark:text-cyan-300 whitespace-nowrap">
-              100% Offline-First Architecture
+              100% Trusted
             </span>
           </div>
         </div>

@@ -1,0 +1,435 @@
+PharmAssist POS - Software License & Service Agreement
+
+**Between:** iCreative (Developer) - Abbottabad, Pakistan  
+**And:** _______________________ - _________________________________________________
+**Date:** __________ 
+**Software:** PharmAssist Point of Sale System
+
+---
+
+## 1. LICENSE & PRICING
+
+### 1.1 One-Time Installation Fee
+**PKR 30,000** (Thirty Thousand Rupees Only)
+- Includes software installation on up to 5 devices
+- 1 Store Manager device + 4 Cashier devices
+- Initial setup, configuration & training
+- **Active License:** The software license remains active subject to the Annual Maintenance Fee. Failure to clear dues within 30 days of the renewal date will result in temporary License Suspension. Access to the software interface will be paused until dues are cleared.
+
+### 1.2 Annual Maintenance Fee
+**PKR 20,000/year** (Twenty Thousand Rupees Only)
+- Bug fixes and technical support
+- Minor updates and improvements
+- Remote assistance via WhatsApp/phone
+- On-site support visits (see Section 7.3)
+- **This rate is locked for 2 years from installation date**
+- After 2 years, may be revised with 60 days advance notice
+
+### 1.3 Payment Terms
+- **70% (PKR 21,000)** - At contract signing (non-refundable after installation begins)
+- **30% (PKR 9,000)** - After successful installation, training & 7-day operation period
+
+**Note:** Payment milestones may be adjusted at developer's discretion for pilot clients. All payments exclude applicable taxes (if any).
+
+### 1.4 Additional Devices (After Initial 5)
+- PKR 8,000 per additional device (one-time, lifetime license)
+- Annual maintenance fee remains PKR 20,000 regardless of total device count
+- Maximum 2 free device replacements per year (see Section 1.5)
+
+### 1.5 Device Hardware Policy
+- **Authorized Limit:** This license is valid for use on exactly 5 specific devices (1 Manager + 4 Cashiers). The software uses "Hardware Fingerprinting" to lock the license to these specific computers.
+- **Replacement Allowance:** The Client is entitled to two (2) free Device Replacements per year (e.g., due to PC failure or upgrade).
+- **Excess Replacements:** Any replacement beyond the annual allowance will incur an administrative fee of PKR 3,000 per incident.
+- **Remote Deactivation:** To replace a device, the Client acknowledges that the Developer will remotely deactivate and reset the license on the old hardware to free up the slot for the new device.
+
+### 1.6 Internet & Connectivity
+- **To ensure your license stays active, the Main Manager PC needs to connect to the internet just once every 30 days. If it stays offline for more than a month, the system will pause until you reconnect.
+
+- Cashier computers do not need internet. They just need to be connected to your Manager PC (via Wi-Fi or Cable) at least once every 15 days to keep running smoothly.
+
+### 1.7 Date & Time Security
+- **The software relies on your computer's correct Date and Time to function properly. Please ensure your Windows clock is accurate.
+
+- Important: Do not manually change your computer's date back to the past (e.g., rolling back 10 days). The system detects this as a security risk (warn you for 7 days) and on 8th day will automatically lock the software.
+
+- Unlock Fee: Unlocking a system caused by date tampering is not covered by free support and requires a technical reset fee of PKR 2,000.
+
+---
+
+## 2. WHAT IS INCLUDED
+
+### 2.1 Core Features (Fully Functional Now)
+✅ Unit-based buying, selling, inventory management  
+✅ Ledger/accounting management  
+✅ Offline-first operation (works without internet)  
+✅ Barcode & batch sticker scanning  
+✅ Keyboard shortcuts for fast operation  
+✅ Multi-device sync via local database (PouchDB/CouchDB)  
+✅ Mobile dashboard (basic cash flow view)  
+✅ Beautiful, lightweight interface (React + Node.js)
+
+### 2.2 Support & Maintenance (Included in Annual Fee)
+✅ Bug fixes for software errors  
+✅ Minor improvements and optimizations  
+✅ Remote support via WhatsApp/phone/TeamViewer  
+✅ On-site visits: 2 during installation + 2 per year (see Section 7.3)  
+✅ Training sessions during installation phase
+
+### 2.3 Early Adopter Bonus (FREE for first 5 clients only)
+**Planned roadmap features - Not contractually guaranteed:**
+- Google Drive automatic backup (estimated 3-4 months)
+- Voice search for products (estimated 3-4 months)
+- Enhanced mobile app with full transaction history (estimated 3-4 months)
+
+**Important Notes:**
+- These are bonus features under active development
+- Timelines are estimates and may vary based on technical feasibility
+- If completed, provided free to initial clients only
+- **Early adopter benefits are non-transferable and non-repeatable**
+- **Failure to deliver any planned bonus feature does not constitute breach of this agreement and does not entitle client to refund or compensation**
+
+---
+
+## 3. WHAT IS NOT INCLUDED
+
+### 3.1 Hardware Support
+❌ Printer, scanner, router, computer hardware issues  
+❌ Windows OS problems or reinstallation  
+❌ Network/internet connectivity issues  
+❌ Device hardware failures or repairs
+
+### 3.2 Major Customizations (Billed Separately)
+❌ New major modules (multi-store support, e-commerce integration)  
+❌ Custom UI restructuring (repositioning elements, workflow changes)  
+❌ Custom reports beyond standard features  
+❌ Integration with third-party systems
+❌ FBR (Federal Board of Revenue) POS Integration or Tax Authority compliance modules (charged separately)
+❌ Data entry of products (unless agreed separately)
+
+**Pricing for major additions:** Quoted separately based on scope and development time
+
+### 3.3 UI Customization Policy
+
+**Included (Free within annual maintenance):**
+- Theme/color selection via built-in settings
+- Enabling/disabling existing features
+- Keyboard shortcut preferences
+- Report column visibility and sorting
+
+**Paid Customization (PKR 5,000-15,000 per change):**
+- Changing element positions (e.g., changing sale flow etc)
+- Altering invoice layout logic or flow
+- Adding custom fields not in standard software
+- Changing workflow sequence or behavior
+
+**Rule of Thumb:** If modification takes more than 2 hours or changes how software behaves = paid customization
+
+---
+
+## 4. DATA & BACKUP RESPONSIBILITY
+
+### 4.1 Data Storage Architecture
+- Data stored locally on each device via PouchDB
+- All devices sync to Store Manager device (CouchDB server)
+- Each device maintains backup of synced data
+- Manual backup button available (saves database to local drive)
+- Future: Automatic Google Drive backup (see Section 2.3)
+
+### 4.2 Client's Responsibilities
+**Client must ensure:**
+- CouchDB password kept secure and confidential
+- Windows C: drive database folders are protected from manual deletion
+- Regular manual backups taken using backup button
+- At least one device (preferably Store Manager) remains operational
+- Devices not formatted/reinstalled without proper backup procedures
+
+### 4.3 Data Liability
+The Developer provides the tool to manage data, but the safety of the hardware and data integrity is the Client's responsibility. The Developer is NOT liable for data loss caused by:
+- Hardware failure (Hard drive crash)
+- Windows corruption or Virus/Ransomware attacks
+- Theft of the computer
+- Remote Wipe execution requested by the Client (e.g., in case of theft)
+- Manual deletion of database folders from C: drive
+- Computer formatting without proper backup
+- Client's failure to maintain regular backups
+- Unauthorized access due to weak or shared passwords
+- Natural disasters, power surges, fire, flood, etc.
+
+### 4.4 Developer's Responsibilities
+**iCreative will:**
+- Assist with data recovery attempts in case of corruption
+- Provide clear guidance on backup procedures during training
+- Help restore data from available backups when possible
+
+**Important:** iCreative does NOT store client's transactional data (sales, purchases, invoices) on external servers. All data remains on client's premises under client's control.
+
+---
+
+## 5. DEVICE LICENSING & MANAGEMENT
+
+### 5.1 Machine Binding
+- Each device bound to hardware identifier (machine ID)
+- **Hardware fingerprinting collects only non-personal device identifiers for licensing; no client data is transmitted to external servers**
+- **If Windows is reinstalled:** Client can self-register using invitation code
+- **If motherboard/major CPU components change:** New device license required
+- Secondary devices can be re-registered using invitation code system
+
+### 5.2 Device Replacement Policy
+- **2 free device replacements per year** (for hardware upgrades/failures)
+- After 2 replacements in same year: PKR 3,000 per additional replacement
+- Replacements due to major hardware changes (motherboard) require new device license
+- Replacement count resets annually
+- Developer will remotely deactivate old device before activating new one
+
+### 5.3 Server Device (Store Manager) Requirements
+- Store Manager device must run CouchDB database (acts as sync server)
+- **If server device is offline:** Cashier devices work independently, sync when reconnected
+- **Invoice numbering when offline:** Terminal-based format (C1-44, C2-44, C3-44) prevents conflicts
+- **Inventory management:** Based on last synced data when offline (normal behavior)
+
+---
+
+## 6. ANNUAL MAINTENANCE RENEWAL
+
+### 6.1 Renewal Process
+- Annual fee due on anniversary of installation date
+- Invoice sent 30 days before expiration date
+- **Grace period:** 30 days after due date with reminder notifications
+
+### 6.2 Non-Payment Consequences
+**Timeline after annual maintenance expiration:**
+
+**Days 1-15:** Friendly reminder notifications in software  
+
+**Days 16-30:** Warning notifications, support response times extended  
+
+**Day 31+:** License SUSPENDED (Access Paused)
+- Software will be temporarily locked until payment is cleared
+- No transactions, reports, or data viewing possible during suspension period
+- All user sessions will be paused across all devices
+- To restore access, client must clear outstanding dues in full
+- All data remains safe on local devices and will be restored immediately upon payment
+- **Reactivation after 90 days may incur a one-time PKR 5,000 restoration fee to cover administrative and data verification costs**
+- Previous annual rate may no longer apply if payment delayed beyond 90 days
+- **Data Export Option:** Upon request during termination, Developer will provide a one-time export of all data in Excel/CSV format within 7 working days, free of charge if requested within 30 days of termination; otherwise, PKR 2,000 fee applies
+
+**Important:** Software lock is designed to preserve data, not destroy it. Once payment is received, full access is restored immediately with all historical data intact.
+
+---
+
+## 7. SUPPORT & RESPONSE TIMES
+
+### 7.1 Support Channels & Hours
+- **Support Channels:** WhatsApp, Phone, Remote Access (TeamViewer/AnyDesk)
+- **Standard Support Hours:** Monday to Saturday, 10:00 AM to 8:00 PM
+- **Emergency Support:** Available outside hours ONLY for "System Down" situations. Emergency is defined as total system failure preventing all sales processing (e.g., software crash across all devices). Partial issues (e.g., single device offline, printer problems) will be handled during standard hours.
+- **On-Site Visits:** During working hours (9 AM - 6 PM)
+
+### 7.2 Response Time Commitments
+- **Critical issues** (system crash, cannot process sales): Prioritized within 2 hours during business hours (10 AM - 8 PM), best effort outside these hours
+- **Major issues** (feature malfunction): Within 24 hours
+- **Minor issues** (UI glitches, cosmetic bugs): Within 3 working days
+- **Feature requests:** Logged for future consideration
+
+**Note:** While developer strives to be responsive at all times, support obligations are during business hours. Emergency support outside these hours provided on best-effort basis.
+
+### 7.3 On-Site Visit Policy
+
+**Included visits:**
+- 2 visits during installation month (setup + training)
+- 2 scheduled visits per year (wellness checks, updates, issue resolution)
+
+**Additional visits:**
+- Standard visit: PKR 2,000/visit + travel costs from Abbottabad
+- Same-day emergency visit: PKR 4,000 + travel costs
+- **Optional:** Purchase "Quarterly Visit Package" at PKR 6,000/year (includes 4 visits, saves PKR 2,000)
+
+---
+
+## 8. SOFTWARE UPDATES & IMPROVEMENTS
+
+### 8.1 Free Updates (Included in Annual Maintenance)
+- Bug fixes and security patches
+- Performance improvements and optimizations
+- Minor feature enhancements
+- UI theme changes via built-in settings
+
+### 8.2 Paid Updates (Quoted Separately)
+- Major new modules (multi-store, e-commerce, API integrations)
+- Custom UI restructuring beyond settings
+- Custom reports or specialized dashboards
+- Third-party software integrations
+
+---
+
+## 9. LICENSE TRANSFER & BUSINESS SALE
+
+### 9.1 Transfer Rights
+If client sells or transfers business ownership:
+- License is transferable **once per business lifecycle** to new owner
+- Transfer allowed if annual maintenance is current at time of transfer
+- Client must notify iCreative **15 days before transfer date**
+- New owner must sign fresh service agreement
+
+### 9.2 Transfer Fees
+- **First transfer:** No charge (one-time courtesy)
+- New owner continues at same annual maintenance rate for remainder of current term
+- Upon renewal, new owner subject to prevailing market rates
+
+### 9.3 Non-Transferable Conditions
+- Early adopter bonuses (roadmap features) do NOT transfer to new owner
+- Locked pricing rates (2-year lock) do NOT automatically transfer
+- Installation fee is not refundable in case of business sale
+
+**Note:** This prevents license sharing/reselling while allowing legitimate business succession.
+
+---
+
+## 10. LIMITATIONS & DISCLAIMERS
+
+### 10.1 Operational Limitations
+- Software designed for Windows operating system
+- Requires local network for multi-device sync
+- Maximum 5 devices included initially (additional at cost)
+- Based on PouchDB/CouchDB database technology
+
+### 10.2 Liability Limitations
+**iCreative is NOT liable for:**
+- Financial losses due to software downtime or errors
+- Data corruption from external factors (hardware, power, user error)
+- Hardware compatibility issues or failures
+- Losses from unauthorized access or weak security practices
+- Force majeure events (power outage, internet failure, natural disasters)
+
+**Maximum Liability:** Limited to fees paid in last 12 months (installation fee + annual maintenance, whichever is applicable)
+
+### 10.3 Warranty
+- Software provided with reasonable care and testing
+- No guarantee of 100% uptime or zero bugs (industry standard)
+- Best effort bug fixing and support included
+- No refunds after installation completion and acceptance
+
+---
+
+## 11. TERMINATION & CANCELLATION
+
+### 11.1 Client Termination Rights
+- Can stop annual maintenance anytime after first year
+- Software access will be suspended upon non-renewal (after 30-day grace period)
+- No refund of installation fee or unused maintenance period
+- Can resume maintenance by paying current market rates
+- **Data Export:** Upon request during termination, client can request a one-time export of all data in Excel/CSV format within 7 working days, free of charge if requested within 30 days of termination; otherwise, PKR 2,000 fee applies
+
+### 11.2 Developer Termination Rights
+iCreative may terminate service if:
+- Client violates terms (reverse engineering, unauthorized reselling)
+- Repeated abusive behavior toward support staff
+- Non-payment beyond 90 days after multiple reminders
+
+### 11.3 Post-Termination
+- Software access will be suspended
+- Client retains ownership of their data
+- Can request fresh service contract at current market rates
+- Data export/backup assistance provided upon reasonable request (one-time Excel/CSV export available)
+
+---
+
+## 12. INTELLECTUAL PROPERTY
+
+### 12.1 Ownership
+- **Software code, design, and brand:** Owned by iCreative
+- **Client data** (sales, inventory, customer records): Owned by Client
+- Client receives usage license, not source code or resale rights
+
+### 12.2 Usage Restrictions
+Client may NOT:
+- Reverse engineer, decompile, or extract source code
+- Resell, distribute, or sublicense software to third parties
+- Remove or modify iCreative branding/watermarks
+- Share license keys with other businesses
+
+**Violation of these restrictions may result in immediate license termination.**
+
+---
+
+## 13. MISCELLANEOUS
+
+### 13.1 Governing Law
+This agreement governed by laws of Pakistan.
+
+### 13.2 Dispute Resolution
+- Primary resolution through friendly negotiation
+- If unresolved: Arbitration in Abbottabad, Pakistan
+- Legal fees borne by party at fault
+
+### 13.3 Amendment Policy
+- Changes must be in writing and signed by both parties
+- Annual maintenance fee may be revised with 60 days advance notice after initial 2-year lock period
+- Major terms (installation fee, device limits) require mutual consent
+
+### 13.4 Entire Agreement
+This document constitutes entire agreement between parties and supersedes all prior verbal or written communications.
+
+---
+
+## 14. CLIENT ACKNOWLEDGMENT & SIGNATURES
+
+By signing below, both parties confirm they have read, understood, and agree to all terms stated above.
+
+### **Key Points Acknowledged:**
+
+**Client confirms understanding of:**
+- ☐ Payment terms: PKR 21,000 (70%) at signing, PKR 9,000 (30%) after 7-day live operation
+- ☐ Data backup is client's responsibility; manual backups must be taken regularly
+- ☐ Hardware issues (printers, scanners, computers) are NOT covered by support
+- ☐ Annual maintenance required for continued software access
+- ☐ **Non-Payment Policy:** Software access is suspended after 30 days of non-payment. The system will pause until outstanding dues are cleared. Reactivation after 90 days may incur PKR 5,000 restoration fee. Data export is one-time, free if requested within 30 days of termination, otherwise PKR 2,000 fee applies.
+- ☐ Roadmap features (Google Drive backup, voice search, enhanced app) are planned bonuses, not guaranteed deliverables
+- ☐ License is transferable once if business is sold (with 15-day notice)
+- ☐ Support hours are Monday-Saturday, 10:00 AM to 8:00 PM (emergency support available for system-down situations only)
+- ☐ Developer will remotely deactivate and reset the license on old hardware when replacing devices (to free up device slots)
+- ☐ Maximum 2 free device replacements per year; PKR 3,000 for additional replacements
+- ☐ Manager needs Internet once/month; Cashiers need local connection.
+- ☐ Changing the computer date to the past will lock the system (Unlock fee applies).
+
+**Client Initials: _______**
+
+---
+
+### **SIGNATURES**
+
+**iCreative (Developer)**  
+Signature: ___________________  
+Name: Immad Khan Lodhi  
+Date: 26/12/2025  
+Phone/WhatsApp: +923706352186  
+Email: immad.lodhi786@gmail.com
+
+**Client**  
+Signature: ___________________  
+Name: ___________________ 
+CNIC: ___________________ 
+Business Name: ___________________ 
+Date: ___________________  
+Phone: ___________________ 
+
+---
+
+**WITNESS (Optional)**  
+1.  
+Signature: ___________________  
+Name: ___________________ 
+CNIC: ___________________ 
+Date: ___________________
+
+2.  
+Signature: ___________________  
+Name: ___________________ 
+CNIC: ___________________ 
+Date: ___________________
+
+---
+
+*This agreement is valid for 90 days from date of signing and supersedes all prior verbal/written communications.*
+
+**Note for Client:** Please retain one signed copy for your records. Contact iCreative support anytime via WhatsApp at +923706352186.se & Service Agreement
